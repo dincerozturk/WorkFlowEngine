@@ -1,0 +1,34 @@
+﻿@model WorkFlowManager.Web.Models.WorkFlowTestModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<a href="@Url.Action("Index", "WorkFlow")">
+    <i class="fa fa-sitemap fa-5x"></i> <br />
+    <span>Work Flow Designer</span>
+</a>
+
+<hr />
+
+
+
+<div class="container">
+    <div class="page-header">
+        <h1>Example Work Flow On Action</h1>
+    </div>
+
+    @foreach (var item in Model.TestList)
+    {
+
+        <a href="@Url.Action("GetProcess", "WorkFlowProcess", new { ownerId = item.BusinessProcessId, taskId = item.TaskId })">
+            <i class="glyphicon glyphicon-play fa-5x"></i> <br />
+            <span>@item.BusinessProcessName</span>
+        </a>
+
+        <br /><br />
+    }
+
+</div>
+
