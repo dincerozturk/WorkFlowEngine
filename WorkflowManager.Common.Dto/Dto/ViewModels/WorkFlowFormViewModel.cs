@@ -1,4 +1,4 @@
-﻿using FluentValidation.Attributes;
+﻿//using FluentValidation.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using WorkFlowManager.Common.Validation;
 
 namespace WorkFlowManager.Common.ViewModels
 {
-    [Validator(typeof(WorkFlowFormViewModelValidator))]
+    //[Validator(typeof(WorkFlowFormViewModelValidator))]
     public class WorkFlowFormViewModel
     {
         public int ProcessId { get; set; }

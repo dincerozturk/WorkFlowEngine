@@ -1,4 +1,4 @@
-﻿using FluentValidation.Attributes;
+﻿//using FluentValidation.Attributes;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
@@ -8,7 +8,7 @@ using WorkFlowManager.Common.Validation;
 
 namespace WorkFlowManager.Common.ViewModels
 {
-    [Validator(typeof(ProcessFormValidator))]
+    //[Validator(typeof(ProcessFormValidator))]
     public class ProcessForm
     {
         public int? ConditionId { get; set; }

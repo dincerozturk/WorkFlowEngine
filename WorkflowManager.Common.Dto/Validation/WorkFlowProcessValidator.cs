@@ -31,38 +31,38 @@ namespace WorkFlowManager.Common.Validation
 
             if (_unitOfWork != null)
             {
-                Custom(model =>
-                {
+                //Custom(model =>
+                //{
 
-                    bool isKosul = model.IsCondition;
-                    Process process = null;
+                //    bool isKosul = model.IsCondition;
+                //    Process process = null;
 
-                    if (isKosul && model.ConditionOptionId == null)
-                    {
-                        return new ValidationFailure("ConditionOptionId", string.Format("You must chose an option"));
-                    }
-                    var proessList = _unitOfWork.Repository<Process>().GetList(x => x.TaskId == model.ProcessTaskId);
+                //    if (isKosul && model.ConditionOptionId == null)
+                //    {
+                //        return new ValidationFailure("ConditionOptionId", string.Format("You must chose an option"));
+                //    }
+                //    var proessList = _unitOfWork.Repository<Process>().GetList(x => x.TaskId == model.ProcessTaskId);
 
-                    if (model.ConditionOptionId != null)
-                    {
-                        process = proessList.FirstOrDefault(x => x.Id == (int)model.ConditionOptionId);
-                    }
-                    else
-                    {
-                        process = proessList.FirstOrDefault(x => x.Id == model.ProcessId);
-                    }
-                    string descriptionPropertyName = "Description";
+                //    if (model.ConditionOptionId != null)
+                //    {
+                //        process = proessList.FirstOrDefault(x => x.Id == (int)model.ConditionOptionId);
+                //    }
+                //    else
+                //    {
+                //        process = proessList.FirstOrDefault(x => x.Id == model.ProcessId);
+                //    }
+                //    string descriptionPropertyName = "Description";
 
-                    if (process.IsDescriptionMandatory)
-                    {
-                        if (model.Description == null)
-                        {
-                            return new ValidationFailure(descriptionPropertyName, string.Format("{0} is required.", descriptionPropertyName));
-                        }
-                    }
+                //    if (process.IsDescriptionMandatory)
+                //    {
+                //        if (model.Description == null)
+                //        {
+                //            return new ValidationFailure(descriptionPropertyName, string.Format("{0} is required.", descriptionPropertyName));
+                //        }
+                //    }
 
-                    return null;
-                });
+                //    return null;
+                //});
 
             }
         }

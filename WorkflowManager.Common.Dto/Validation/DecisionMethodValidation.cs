@@ -37,35 +37,35 @@ namespace WorkFlowManager.Common.Validation
 
             if (_context != null) // database validations
             {
-                Custom(model =>
-                {
-                    //Görev içerisinde aynı isimli iki form olamaz.
-                    var metot = _unitOfWork.Repository<DecisionMethod>().Get(x =>
-                        (
-                            x.Id != model.Id &&
-                            (
-                                (x.MethodName == model.MethodName && x.TaskId == model.TaskId)
-                                ||
-                                (x.MethodFunction == model.MethodFunction && x.TaskId == model.TaskId)
-                            )
-                        )
-                    );
+                //Custom(model =>
+                //{
+                //    //Görev içerisinde aynı isimli iki form olamaz.
+                //    var metot = _unitOfWork.Repository<DecisionMethod>().Get(x =>
+                //        (
+                //            x.Id != model.Id &&
+                //            (
+                //                (x.MethodName == model.MethodName && x.TaskId == model.TaskId)
+                //                ||
+                //                (x.MethodFunction == model.MethodFunction && x.TaskId == model.TaskId)
+                //            )
+                //        )
+                //    );
 
 
-                    if (metot != null && metot.MethodName.CompareTo(model.MethodName) == 0)
-                    {
-                        return new ValidationFailure("MethodName", string.Format("{0} used before. Please change it.", model.MethodName));
-                    }
+                //    if (metot != null && metot.MethodName.CompareTo(model.MethodName) == 0)
+                //    {
+                //        return new ValidationFailure("MethodName", string.Format("{0} used before. Please change it.", model.MethodName));
+                //    }
 
-                    if (metot != null && metot.MethodFunction.CompareTo(model.MethodFunction) == 0)
-                    {
-                        return new ValidationFailure("MethodFunction", string.Format("{0} used before. Please change it.", model.MethodFunction));
-                    }
+                //    if (metot != null && metot.MethodFunction.CompareTo(model.MethodFunction) == 0)
+                //    {
+                //        return new ValidationFailure("MethodFunction", string.Format("{0} used before. Please change it.", model.MethodFunction));
+                //    }
 
 
 
-                    return null;
-                });
+                //    return null;
+                //});
             }
 
         }

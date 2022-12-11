@@ -36,28 +36,28 @@ namespace WorkFlowManager.Common.Validation
 
             if (_context != null) // database validations
             {
-                Custom(model =>
-                {
-                    //Görev içerisinde aynı isimli iki form olamaz.
-                    var formView = _unitOfWork.Repository<FormView>().Get(x =>
-                        (
-                            x.Id != model.Id &&
-                            (
-                                (x.FormName == model.FormName && x.TaskId == model.TaskId)
-                                ||
-                                (x.ViewName == model.ViewName && x.TaskId == model.TaskId)
-                            )
-                        )
-                    );
-                    if (formView != null)
-                    {
-                        return new ValidationFailure("FormName", string.Format("{0} is used before. Please change it.", model.FormName));
-                    }
+                //Custom(model =>
+                //{
+                //    //Görev içerisinde aynı isimli iki form olamaz.
+                //    var formView = _unitOfWork.Repository<FormView>().Get(x =>
+                //        (
+                //            x.Id != model.Id &&
+                //            (
+                //                (x.FormName == model.FormName && x.TaskId == model.TaskId)
+                //                ||
+                //                (x.ViewName == model.ViewName && x.TaskId == model.TaskId)
+                //            )
+                //        )
+                //    );
+                //    if (formView != null)
+                //    {
+                //        return new ValidationFailure("FormName", string.Format("{0} is used before. Please change it.", model.FormName));
+                //    }
 
 
 
-                    return null;
-                });
+                //    return null;
+                //});
             }
 
         }

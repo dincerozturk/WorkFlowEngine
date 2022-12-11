@@ -36,47 +36,47 @@ namespace WorkFlowManager.Common.Validation
                 .Length(1, 100).WithMessage("Message length must be less than 100 characters");
 
 
-            Custom(model =>
-            {
-                if (model.ProcessType == Enums.ProcessType.Process)
-                {
-                    if (model.IsStandardForm == true)
-                    {
-                        //if (model.StantartFormDosyaYuklemeZorunlu == false && model.StandartFormAciklamaZorunlu == false)
-                        //{
-                        //    return new ValidationFailure("StandartFormAciklamaZorunlu", string.Format("En az bir stantart form bilgisi zorunlu olarak seçilmeli."));
-                        //}
-                    }
-                    else //Özel Form ise
-                    {
-                        // Form türü seçilmiş olmalı
-                        //Analiz girilmiş olmalı
-                        //Dokümanlar yüklenmiş olmalı
-                        //if (model.FormTur == null)
-                        //{
-                        //    return new ValidationFailure("FormTur", string.Format("Şablon belge türünü seçmelisiniz."));
-                        //}
+            //Custom(model =>
+            //{
+            //    if (model.ProcessType == Enums.ProcessType.Process)
+            //    {
+            //        if (model.IsStandardForm == true)
+            //        {
+            //            //if (model.StantartFormDosyaYuklemeZorunlu == false && model.StandartFormAciklamaZorunlu == false)
+            //            //{
+            //            //    return new ValidationFailure("StandartFormAciklamaZorunlu", string.Format("En az bir stantart form bilgisi zorunlu olarak seçilmeli."));
+            //            //}
+            //        }
+            //        else //Özel Form ise
+            //        {
+            //            // Form türü seçilmiş olmalı
+            //            //Analiz girilmiş olmalı
+            //            //Dokümanlar yüklenmiş olmalı
+            //            //if (model.FormTur == null)
+            //            //{
+            //            //    return new ValidationFailure("FormTur", string.Format("Şablon belge türünü seçmelisiniz."));
+            //            //}
 
-                        if (model.FormViewId == null)
-                        {
-                            return new ValidationFailure("FormViewId", string.Format("Form must be selected"));
-                        }
-                        if (model.SpecialFormAnalysis == null)
-                        {
-                            return new ValidationFailure("SpecialFormAnalysis", string.Format("Analysis is required."));
-                        }
+            //            if (model.FormViewId == null)
+            //            {
+            //                return new ValidationFailure("FormViewId", string.Format("Form must be selected"));
+            //            }
+            //            if (model.SpecialFormAnalysis == null)
+            //            {
+            //                return new ValidationFailure("SpecialFormAnalysis", string.Format("Analysis is required."));
+            //            }
 
-                    }
-                }
-                else if (model.ProcessType == Enums.ProcessType.DecisionPoint)
-                {
-                    if (model.DecisionMethodId == null)
-                    {
-                        return new ValidationFailure("DecisionMethodId", string.Format("Decision method is required."));
-                    }
-                }
-                return null;
-            });
+            //        }
+            //    }
+            //    else if (model.ProcessType == Enums.ProcessType.DecisionPoint)
+            //    {
+            //        if (model.DecisionMethodId == null)
+            //        {
+            //            return new ValidationFailure("DecisionMethodId", string.Format("Decision method is required."));
+            //        }
+            //    }
+            //    return null;
+            //});
 
             //if (_context != null) // database validations
             //{
