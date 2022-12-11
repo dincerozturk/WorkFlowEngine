@@ -698,10 +698,6 @@
       <Project>{10e52f09-c068-45ab-86e2-26e0c3ba05b4}</Project>
       <Name>WorkflowManager.Common.Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WorkflowManager.Common.Mvc\WorkflowManager.Common.Mvc.csproj">
-      <Project>{f6977498-39e1-4950-868d-06371b854993}</Project>
-      <Name>WorkflowManager.Common.Mvc</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WorkflowManager.Services.Abstract\WorkflowManager.Services.Abstract.csproj">
       <Project>{91fda24a-d5db-49e0-97a1-0c54a5f1d7fd}</Project>
       <Name>WorkflowManager.Services.Abstract</Name>
