@@ -364,20 +364,20 @@ namespace WorkFlowManager.Services.DbServices
                 .Get(
                         x => x.Id == workFlowTraceId,
                         x => x.Process,
-                            x => x.Process.DocumentList,
+                            x => x.Process.Documents,
                                 x => x.Process.FormView,
-                                    x => x.DocumentList,
+                                    x => x.Documents,
                                         x => x.Process.Task
                     );
 
             if (WorkFlowTrace.Process.GetType() == typeof(Condition))
             {
-                ((Condition)WorkFlowTrace.Process).OptionList = _unitOfWork.Repository<ConditionOption>().GetList(x => x.ConditionId == WorkFlowTrace.ProcessId).ToList();
+                ((Condition)WorkFlowTrace.Process).ConditionOptions = _unitOfWork.Repository<ConditionOption>().GetList(x => x.ConditionId == WorkFlowTrace.ProcessId).ToList();
             }
 
             if (WorkFlowTrace.Process.GetType() == typeof(SubProcess))
             {
-                WorkFlowTrace.SubProcessList = _unitOfWork.Repository<BusinessProcess>().GetList(x => x.OwnerSubProcessTraceId == workFlowTraceId).ToList();
+                WorkFlowTrace.BusinessProcesses = _unitOfWork.Repository<BusinessProcess>().GetList(x => x.OwnerSubProcessTraceId == workFlowTraceId).ToList();
             }
 
 

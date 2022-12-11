@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using System.Data.Entity;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.DataAccess.Repositories;
 using WorkFlowManager.Common.ViewModels;
@@ -8,7 +9,7 @@ namespace WorkFlowManager.Common.Validation
 {
     public class ProcessFormValidator : AbstractValidator<ProcessForm>
     {
-        private readonly IDbContext _context;
+        private readonly DbContext _context;
         private readonly IUnitOfWork _unitOfWork;
 
         public ProcessFormValidator()

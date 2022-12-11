@@ -29,8 +29,8 @@ namespace WorkFlowManager.Common.ViewModels
         public int? FormViewId { get; set; }
 
         public SelectList FormViewList { get; set; }
-
-        public IList<MonitoringRoleCheckbox> MonitoringRoleList { get; set; }
+        //MonitoringRoleList
+        public IList<MonitoringRoleCheckbox> MonitoringRoleCheckboxes { get; set; }
 
         public string ProcessUniqueCode { get; set; }
         public int TaskId { get; set; }

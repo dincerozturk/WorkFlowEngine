@@ -133,6 +133,10 @@
       <Project>{619910d1-5409-4798-a643-03fd8270e01c}</Project>
       <Name>WorkFlowManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WorkflowManager.EF6\WorkflowManager.EF6.csproj">
+      <Project>{7fedd1a1-ba8a-4062-8a48-9004a624b0a5}</Project>
+      <Name>WorkflowManager.EF6</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

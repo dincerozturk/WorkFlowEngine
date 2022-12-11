@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using System.Data.Entity;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.DataAccess.Repositories;
 using WorkFlowManager.Common.Tables;
@@ -9,7 +10,7 @@ namespace WorkFlowManager.Common.Validation
 {
     public class DecisionMethodValidation : AbstractValidator<DecisionMethodViewModel>
     {
-        private readonly IDbContext _context;
+        private readonly DbContext _context;
         private readonly IUnitOfWork _unitOfWork;
 
 

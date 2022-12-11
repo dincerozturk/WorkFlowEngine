@@ -691,6 +691,10 @@
       <Project>{619910d1-5409-4798-a643-03fd8270e01c}</Project>
       <Name>WorkFlowManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WorkflowManager.EF6\WorkflowManager.EF6.csproj">
+      <Project>{7fedd1a1-ba8a-4062-8a48-9004a624b0a5}</Project>
+      <Name>WorkflowManager.EF6</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkFlowManager.Services\WorkFlowManager.Services.csproj">
       <Project>{40a870b8-9178-4cab-9ad0-039fbb39a072}</Project>
       <Name>WorkFlowManager.Services</Name>

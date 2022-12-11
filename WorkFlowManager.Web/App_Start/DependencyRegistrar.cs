@@ -3,6 +3,7 @@ using Autofac.Integration.Mvc;
 using AutoMapper;
 using Hangfire;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using WorkFlowManager.Common.DataAccess._Context;
@@ -47,7 +48,7 @@ namespace WorkFlowManager.Web
 
 
             builder.RegisterType<DataContext>()
-                .As<IDbContext>()
+                .As<DbContext>()
                 .InstancePerBackgroundJob()
                 .InstancePerDependency();
 
@@ -127,8 +128,8 @@ namespace WorkFlowManager.Web
                     .Include<ProcessForm, SubProcess>()
                     .Include<ProcessForm, ConditionOption>()
                     .Include<ProcessForm, DecisionPoint>()
-                    .ForMember(a => a.MonitoringRoleList,
-                        opt => opt.MapFrom(c => c.MonitoringRoleList.Where(x => x.IsChecked == true).Select(t => new ProcessMonitoringRole
+                    .ForMember(a => a.ProcessMonitoringRoles,
+                        opt => opt.MapFrom(c => c.MonitoringRoleCheckboxes.Where(x => x.IsChecked == true).Select(t => new ProcessMonitoringRole
                         {
                             ProcessId = c.Id,
                             ProjectRole = t.ProjectRole

@@ -39,8 +39,8 @@ namespace WorkFlowManager.Services.DbServices
                         x => x.Process,
                             x => x.ConditionOption,
                                 x => x.Process.Task,
-                                    x => x.ConditionOption.MonitoringRoleList,
-                                        x => x.Process.MonitoringRoleList);
+                                    x => x.ConditionOption.ProcessMonitoringRoles,
+                                        x => x.Process.ProcessMonitoringRoles);
 
             UserProcessViewModel userProcess = null;
             if (workFlowTrace != null)
@@ -70,14 +70,14 @@ namespace WorkFlowManager.Services.DbServices
                     CreatedTime = workFlowTrace.CreatedTime,
                     ProcessMonitoringRolList =
                         (workFlowTrace.ConditionOption ?? workFlowTrace.Process)
-                        .MonitoringRoleList
+                        .ProcessMonitoringRoles
                         .Select(t => new ProcessMonitoringRole
                         {
                             ProcessId = t.ProcessId,
                             ProjectRole = t.ProjectRole
                         })
                         .ToList(),
-                    IslemBelgeListesi = (workFlowTrace.DocumentList != null ? workFlowTrace.DocumentList.ToList() : null)
+                    IslemBelgeListesi = (workFlowTrace.Documents != null ? workFlowTrace.Documents.ToList() : null)
                 };
             }
             return userProcess;

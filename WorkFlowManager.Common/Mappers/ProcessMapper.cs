@@ -20,7 +20,7 @@ namespace WorkFlowManager.Common.Mappers
 
             if (formData.AnalysisFileList != null && formData.TemplateFileList != null)
             {
-                dto.DocumentList = formData.AnalysisFileList.FileList.Concat(formData.TemplateFileList.FileList).ToList();
+                dto.Documents = formData.AnalysisFileList.FileList.Concat(formData.TemplateFileList.FileList).ToList();
             }
             return (T)dto;
         }
@@ -28,14 +28,14 @@ namespace WorkFlowManager.Common.Mappers
         public static ProcessForm ToProcessForm(this Process process, IEnumerable<Process> mainProcessList, IEnumerable<DecisionMethod> decisionMethodList, IEnumerable<FormView> formViewList)
         {
 
-            var roleList = ProjectRole.Admin.GetAllValues().Where(x => x != ProjectRole.Sistem).ToList();
+            var roleList = ProjectRole.Admin.GetAllValues().Where(x => x != ProjectRole.System).ToList();
 
             ProcessForm dto = Mapper.Map<Process, ProcessForm>(process);
             foreach (var rol in roleList)
             {
-                if (!dto.MonitoringRoleList.Any(x => x.ProjectRole == rol))
+                if (!dto.MonitoringRoleCheckboxes.Any(x => x.ProjectRole == rol))
                 {
-                    dto.MonitoringRoleList.Add(new MonitoringRoleCheckbox { IsChecked = false, ProjectRole = rol });
+                    dto.MonitoringRoleCheckboxes.Add(new MonitoringRoleCheckbox { IsChecked = false, ProjectRole = rol });
                 }
             }
 
@@ -60,9 +60,9 @@ namespace WorkFlowManager.Common.Mappers
             }
 
             dto.MainProcessList = (mainProcessList != null ? new SelectList(mainProcessList, "Id", "Name") : null);
-            dto.TemplateFileList = new FileUpload(process.DocumentList, FileType.ProcessTemplateFile, process.Id);
+            dto.TemplateFileList = new FileUpload(process.Documents, FileType.ProcessTemplateFile, process.Id);
 
-            dto.AnalysisFileList = new FileUpload(process.DocumentList, FileType.AnalysisFile, process.Id);
+            dto.AnalysisFileList = new FileUpload(process.Documents, FileType.AnalysisFile, process.Id);
 
             return dto;
 

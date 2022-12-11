@@ -114,63 +114,15 @@
   <ItemGroup>
     <Compile Include="Constants\IWorkFlowForm.cs" />
     <Compile Include="Constants\WorkFlowUtil.cs" />
-    <Compile Include="DataAccess\Migrations\Configuration.cs" />
-    <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
-    <Compile Include="DataAccess\Repositories\IDbContext.cs" />
-    <Compile Include="DataAccess\Repositories\IRepository.cs" />
-    <Compile Include="DataAccess\_Context\DataContext.cs" />
-    <Compile Include="DataAccess\_UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="DataAccess\_UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Dto\TaskVariable.cs" />
     <Compile Include="Dto\WorlFlowDto.cs" />
-    <Compile Include="Enums\FileType.cs" />
-    <Compile Include="Enums\FormComplexity.cs" />
-    <Compile Include="Enums\Gender.cs" />
-    <Compile Include="Enums\ProcessStatus.cs" />
-    <Compile Include="Enums\ProcessType.cs" />
-    <Compile Include="Enums\MessageDialogType.cs" />
-    <Compile Include="Enums\MessageType.cs" />
-    <Compile Include="Enums\ProjectRole.cs" />
-    <Compile Include="Enums\RegistrationStatus.cs" />
-    <Compile Include="Enums\SystemMessage.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Extensions\ExtensionsMvc.cs" />
     <Compile Include="Factory\ProcessFactory.cs" />
     <Compile Include="Helper\ValidationHelper.cs" />
     <Compile Include="InfraStructure\MultipleButtonAttribute.cs" />
     <Compile Include="InfraStructure\PagedData.cs" />
-    <Compile Include="Mapping\BaseTableMap.cs" />
-    <Compile Include="Mapping\BaseTableTableMap.cs" />
-    <Compile Include="Mapping\ConditionMap.cs" />
-    <Compile Include="Mapping\DocumentMap.cs" />
-    <Compile Include="Mapping\FormViewMap.cs" />
-    <Compile Include="Mapping\BusinessProcessMap.cs" />
-    <Compile Include="Mapping\ProcessMonitoringRoleMap.cs" />
-    <Compile Include="Mapping\ProcessMap.cs" />
-    <Compile Include="Mapping\TaskMap.cs" />
-    <Compile Include="Mapping\TestFormMap.cs" />
-    <Compile Include="Mapping\WorkFlowMap.cs" />
-    <Compile Include="Mapping\DecisionMethodMap.cs" />
-    <Compile Include="Mapping\DecisionPointMap.cs" />
-    <Compile Include="Mapping\ConditionOptionMap.cs" />
-    <Compile Include="Mapping\WorkFlowTraceMap.cs" />
+    <Compile Include="Mappers\ProcessMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\BaseTable.cs" />
-    <Compile Include="Tables\Document.cs" />
-    <Compile Include="Tables\FormView.cs" />
-    <Compile Include="Tables\BusinessProcess.cs" />
-    <Compile Include="Tables\SubProcess.cs" />
-    <Compile Include="Tables\Task.cs" />
-    <Compile Include="Tables\Process.cs" />
-    <Compile Include="Tables\ProcessMonitoringRole.cs" />
-    <Compile Include="Tables\TestForm.cs" />
-    <Compile Include="Tables\WorkFlow.cs" />
-    <Compile Include="Tables\DecisionMethod.cs" />
-    <Compile Include="Tables\DecisionPoint.cs" />
-    <Compile Include="Tables\Condition.cs" />
-    <Compile Include="Tables\ConditionOption.cs" />
-    <Compile Include="Tables\WorkFlowTrace.cs" />
-    <Compile Include="Tables\WorkFlowEngineVariable.cs" />
     <Compile Include="Validation\FormViewValidation.cs" />
     <Compile Include="Validation\ProcessFormValidator.cs" />
     <Compile Include="Validation\DecisionMethodValidation.cs" />
@@ -185,9 +137,7 @@
     <Compile Include="ViewModels\WorkFlowViewModel.cs" />
     <Compile Include="ViewModels\TemplateViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
@@ -199,6 +149,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorkflowManager.EF6\WorkflowManager.EF6.csproj">
+      <Project>{7fedd1a1-ba8a-4062-8a48-9004a624b0a5}</Project>
+      <Name>WorkflowManager.EF6</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

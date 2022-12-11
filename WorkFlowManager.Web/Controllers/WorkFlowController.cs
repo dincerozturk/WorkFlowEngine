@@ -61,12 +61,12 @@ namespace WorkFlowManager.Web.Controllers
 
         public ProcessForm ProcessFormLoad(ProcessForm formData)
         {
-            var process = _unitOfWork.Repository<Process>().Get(x => x.Id == formData.Id, x => x.DocumentList);
+            var process = _unitOfWork.Repository<Process>().Get(x => x.Id == formData.Id, x => x.Documents);
 
             if (process != null)
             {
-                formData.TemplateFileList = new FileUpload(process.DocumentList, FileType.ProcessTemplateFile, process.Id);
-                formData.AnalysisFileList = new FileUpload(process.DocumentList, FileType.AnalysisFile, process.Id);
+                formData.TemplateFileList = new FileUpload(process.Documents, FileType.ProcessTemplateFile, process.Id);
+                formData.AnalysisFileList = new FileUpload(process.Documents, FileType.AnalysisFile, process.Id);
                 formData.ProcessUniqueCode = process.ProcessUniqueCode;
             }
 
@@ -166,8 +166,8 @@ namespace WorkFlowManager.Web.Controllers
 
             if (formData.ProcessType == ProcessType.OptionList || formData.ProcessType == ProcessType.Process || formData.ProcessType == ProcessType.SubProcess)
             {
-                var monitoringList = formData.MonitoringRoleList;
-                formData.MonitoringRoleList = Global.GetAllRoles().Select(rol => new MonitoringRoleCheckbox
+                var monitoringList = formData.MonitoringRoleCheckboxes;
+                formData.MonitoringRoleCheckboxes = Global.GetAllRoles().Select(rol => new MonitoringRoleCheckbox
                 {
                     ProjectRole = rol,
                     IsChecked = monitoringList != null ? monitoringList.Where(x => x.IsChecked == true).Any(t => t.ProjectRole == rol) : false

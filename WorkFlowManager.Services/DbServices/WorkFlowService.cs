@@ -51,7 +51,7 @@ namespace WorkFlowManager.Services.DbServices
 
         public string Delete(int processId)
         {
-            Process process = _unitOfWork.Repository<Process>().GetForUpdate(x => x.Id == processId, x => x.MonitoringRoleList, x => x.DocumentList);
+            Process process = _unitOfWork.Repository<Process>().GetForUpdate(x => x.Id == processId, x => x.ProcessMonitoringRoles, x => x.Documents);
             int taskId = process.TaskId;
 
             if (process.GetType() == typeof(Condition))
@@ -73,12 +73,12 @@ namespace WorkFlowManager.Services.DbServices
                 _unitOfWork.Complete();
             }
 
-            if (process.DocumentList != null && process.DocumentList.Count() > 0)
+            if (process.Documents != null && process.Documents.Count() > 0)
             {
-                _unitOfWork.Repository<Document>().RemoveRange(process.DocumentList);
+                _unitOfWork.Repository<Document>().RemoveRange(process.Documents);
             }
 
-            var processList = _unitOfWork.Repository<Process>().GetList(null, x => x.MonitoringRoleList);
+            var processList = _unitOfWork.Repository<Process>().GetList(null, x => x.ProcessMonitoringRoles);
             Process before = GetBefore(processId);
 
             string result = null;
@@ -100,9 +100,9 @@ namespace WorkFlowManager.Services.DbServices
             var deletedTaskName = process.Name;
 
 
-            if (process.MonitoringRoleList != null && process.MonitoringRoleList.Count() > 0)
+            if (process.ProcessMonitoringRoles != null && process.ProcessMonitoringRoles.Count() > 0)
             {
-                _unitOfWork.Repository<ProcessMonitoringRole>().RemoveRange(process.MonitoringRoleList);
+                _unitOfWork.Repository<ProcessMonitoringRole>().RemoveRange(process.ProcessMonitoringRoles);
             }
 
             Task task = _unitOfWork.Repository<Task>().Get(process.TaskId);
@@ -151,21 +151,21 @@ namespace WorkFlowManager.Services.DbServices
             }
             else
             {
-                processRecorded = _unitOfWork.Repository<T>().GetForUpdate(x => x.Id == process.Id, x => x.MonitoringRoleList, x => x.DocumentList);
+                processRecorded = _unitOfWork.Repository<T>().GetForUpdate(x => x.Id == process.Id, x => x.ProcessMonitoringRoles, x => x.Documents);
                 processRecordedNextProcessId = processRecorded.NextProcessId;
 
-                if (processRecorded.MonitoringRoleList != null)
+                if (processRecorded.ProcessMonitoringRoles != null)
                 {
-                    var deletedRoleList = processRecorded.MonitoringRoleList.Where(x => !process.MonitoringRoleList.Any(t => t.ProjectRole == x.ProjectRole)).ToList();
+                    var deletedRoleList = processRecorded.ProcessMonitoringRoles.Where(x => !process.ProcessMonitoringRoles.Any(t => t.ProjectRole == x.ProjectRole)).ToList();
                     foreach (var role in deletedRoleList)
                     {
                         _unitOfWork.Repository<ProcessMonitoringRole>().Remove(role);
                     }
                 }
 
-                if (processRecorded.DocumentList != null)
+                if (processRecorded.Documents != null)
                 {
-                    var deletedDocumentList = processRecorded.DocumentList.Where(x => !process.DocumentList.Any(t => t.MediaName == x.MediaName)).ToList();
+                    var deletedDocumentList = processRecorded.Documents.Where(x => !process.Documents.Any(t => t.MediaName == x.MediaName)).ToList();
                     foreach (var document in deletedDocumentList)
                     {
                         _unitOfWork.Repository<Document>().Remove(document);
@@ -421,15 +421,15 @@ namespace WorkFlowManager.Services.DbServices
 
         public Process GetProcess(int processId)
         {
-            Process process = _unitOfWork.Repository<Process>().Get(x => x.Id == processId, x => x.MonitoringRoleList, x => x.DocumentList);
+            Process process = _unitOfWork.Repository<Process>().Get(x => x.Id == processId, x => x.ProcessMonitoringRoles, x => x.Documents);
 
             if (process.GetType() == typeof(ConditionOption))
             {
-                process = _unitOfWork.Repository<ConditionOption>().Get(x => x.Id == processId, x => x.MonitoringRoleList, x => x.Condition);
+                process = _unitOfWork.Repository<ConditionOption>().Get(x => x.Id == processId, x => x.ProcessMonitoringRoles, x => x.Condition);
             }
             if (process.GetType() == typeof(DecisionPoint))
             {
-                process = _unitOfWork.Repository<DecisionPoint>().Get(x => x.Id == processId, x => x.MonitoringRoleList, x => x.DecisionMethod);
+                process = _unitOfWork.Repository<DecisionPoint>().Get(x => x.Id == processId, x => x.ProcessMonitoringRoles, x => x.DecisionMethod);
             }
             return process;
         }
