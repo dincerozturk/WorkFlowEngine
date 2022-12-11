@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Constants\IWorkFlowForm.cs" />
+    <Compile Include="Constants\IWorkFlowUtil.cs" />
     <Compile Include="CustomFormsAbstract\IHealthInformationWorkFlowForm.cs" />
     <Compile Include="CustomFormsAbstract\TestWorkFlowForm.cs" />
     <Compile Include="DbServicesAbstract\IDecisionMethodService.cs" />

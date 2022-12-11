@@ -78,7 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\IWorkFlowForm.cs" />
     <Compile Include="Constants\WorkFlowUtil.cs" />
     <Compile Include="Dto\ViewModels\AccountViewModels.cs" />
     <Compile Include="Dto\ViewModels\ProcessVM.cs" />

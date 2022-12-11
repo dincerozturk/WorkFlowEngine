@@ -7,6 +7,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using WorkFlowManager.Common.Constants;
 using WorkFlowManager.Common.DataAccess._Context;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.DataAccess.Repositories;
@@ -160,6 +161,12 @@ namespace WorkFlowManager.Web
             builder.RegisterType<Global2>()
         .As<IGlobal>()
         .InstancePerLifetimeScope();
+
+            builder.RegisterType<WorkFlowUtil2>()
+        .As<IWorkFlowUtil>()
+        .InstancePerLifetimeScope();
+
+            
 
             #endregion
 

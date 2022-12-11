@@ -114,6 +114,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\WorkFlowUtil2.cs" />
     <Compile Include="CustomForms\HealthInformationWorkFlowForm.cs" />
     <Compile Include="CustomForms\TestWorkFlowForm.cs" />
     <Compile Include="DbServices\DocumentService.cs" />

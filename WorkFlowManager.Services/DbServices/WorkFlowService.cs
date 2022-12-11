@@ -14,9 +14,11 @@ namespace WorkFlowManager.Services.DbServices
     public class WorkFlowService : IWorkFlowService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public WorkFlowService(IUnitOfWork unitOfWork)
+        private readonly IWorkFlowUtil _workFlowUtil;
+        public WorkFlowService(IUnitOfWork unitOfWork, IWorkFlowUtil workFlowUtil)
         {
             _unitOfWork = unitOfWork;
+            _workFlowUtil = workFlowUtil;
         }
 
         public IEnumerable<WorkFlow> GetWorkFlowList()
@@ -46,7 +48,7 @@ namespace WorkFlowManager.Services.DbServices
 
         public void SetWorkFlowDiagram(int taskId)
         {
-            WorkFlowUtil.SetWorkFlowDiagram(_unitOfWork, taskId);
+            _workFlowUtil.SetWorkFlowDiagram(_unitOfWork, taskId);
         }
 
         public string Delete(int processId)
