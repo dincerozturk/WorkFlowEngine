@@ -106,6 +106,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\Constants\IWorkFlowForm.cs" />
+    <Compile Include="Dto\Constants\WorkFlowUtil.cs" />
+    <Compile Include="Dto\Dto\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Dto\Dto\ViewModels\ProcessVM.cs" />
+    <Compile Include="Dto\Dto\ViewModels\SubBusinessProcessViewModel.cs" />
+    <Compile Include="Dto\Dto\ViewModels\TemplateViewModel.cs" />
+    <Compile Include="Dto\Dto\ViewModels\TestWorkFlowFormViewModel.cs" />
+    <Compile Include="Dto\Dto\ViewModels\WorkFlowFormViewModel.cs" />
+    <Compile Include="Dto\Dto\ViewModels\WorkFlowTraceVM.cs" />
+    <Compile Include="Dto\Dto\ViewModels\WorkFlowViewModel.cs" />
+    <Compile Include="Dto\Dto\WorlFlowDto.cs" />
+    <Compile Include="Dto\InfraStructure\PagedData.cs" />
+    <Compile Include="Dto\Mappers\ProcessMapper.cs" />
+    <Compile Include="Dto\Validation\DecisionMethodValidation.cs" />
+    <Compile Include="Dto\Validation\FormViewValidation.cs" />
+    <Compile Include="Dto\Validation\ProcessFormValidator.cs" />
+    <Compile Include="Dto\Validation\TestFormViewModelValidator.cs" />
+    <Compile Include="Dto\Validation\WorkFlowProcessValidator.cs" />
+    <Compile Include="EF6\DataAccess\Repositories\BaseRepository.cs" />
+    <Compile Include="EF6\DataAccess\Repositories\IDbContext.cs" />
+    <Compile Include="EF6\DataAccess\Repositories\IRepository.cs" />
+    <Compile Include="EF6\DataAccess\_Context\DataContext.cs" />
+    <Compile Include="EF6\DataAccess\_UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="EF6\DataAccess\_UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="EF6\Enums\FileType.cs" />
+    <Compile Include="EF6\Enums\FormComplexity.cs" />
+    <Compile Include="EF6\Enums\Gender.cs" />
+    <Compile Include="EF6\Enums\MessageDialogType.cs" />
+    <Compile Include="EF6\Enums\MessageType.cs" />
+    <Compile Include="EF6\Enums\ProcessStatus.cs" />
+    <Compile Include="EF6\Enums\ProcessType.cs" />
+    <Compile Include="EF6\Enums\ProjectRole.cs" />
+    <Compile Include="EF6\Enums\RegistrationStatus.cs" />
+    <Compile Include="EF6\Enums\SystemMessage.cs" />
+    <Compile Include="EF6\Extensions\EnumExtensions.cs" />
+    <Compile Include="EF6\Extensions\Extensions.cs" />
+    <Compile Include="EF6\Factory\ProcessFactory.cs" />
+    <Compile Include="EF6\Factory\TaskVariable.cs" />
+    <Compile Include="EF6\Mapping\BaseTableMap.cs" />
+    <Compile Include="EF6\Mapping\BaseTableTableMap.cs" />
+    <Compile Include="EF6\Mapping\BusinessProcessMap.cs" />
+    <Compile Include="EF6\Mapping\ConditionMap.cs" />
+    <Compile Include="EF6\Mapping\ConditionOptionMap.cs" />
+    <Compile Include="EF6\Mapping\DecisionMethodMap.cs" />
+    <Compile Include="EF6\Mapping\DecisionPointMap.cs" />
+    <Compile Include="EF6\Mapping\DocumentMap.cs" />
+    <Compile Include="EF6\Mapping\FormViewMap.cs" />
+    <Compile Include="EF6\Mapping\ProcessMap.cs" />
+    <Compile Include="EF6\Mapping\ProcessMonitoringRoleMap.cs" />
+    <Compile Include="EF6\Mapping\TaskMap.cs" />
+    <Compile Include="EF6\Mapping\TestFormMap.cs" />
+    <Compile Include="EF6\Mapping\WorkFlowMap.cs" />
+    <Compile Include="EF6\Mapping\WorkFlowTraceMap.cs" />
+    <Compile Include="EF6\Tables\BaseTable.cs" />
+    <Compile Include="EF6\Tables\BusinessProcess.cs" />
+    <Compile Include="EF6\Tables\Condition.cs" />
+    <Compile Include="EF6\Tables\ConditionOption.cs" />
+    <Compile Include="EF6\Tables\DecisionMethod.cs" />
+    <Compile Include="EF6\Tables\DecisionPoint.cs" />
+    <Compile Include="EF6\Tables\Document.cs" />
+    <Compile Include="EF6\Tables\FormView.cs" />
+    <Compile Include="EF6\Tables\Process.cs" />
+    <Compile Include="EF6\Tables\ProcessMonitoringRole.cs" />
+    <Compile Include="EF6\Tables\SubProcess.cs" />
+    <Compile Include="EF6\Tables\Task.cs" />
+    <Compile Include="EF6\Tables\TestForm.cs" />
+    <Compile Include="EF6\Tables\WorkFlow.cs" />
+    <Compile Include="EF6\Tables\WorkFlowEngineVariable.cs" />
+    <Compile Include="EF6\Tables\WorkFlowTrace.cs" />
+    <Compile Include="Helper\ValidationHelper.cs" />
+    <Compile Include="Mvc\Extensions\ExtensionsMvc.cs" />
+    <Compile Include="Mvc\InfraStructure\MultipleButtonAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,25 +185,10 @@
       <Project>{8b386c62-3f08-433a-8a64-90636a00039a}</Project>
       <Name>ClassLibrary1</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WorkflowManager.Common.Dto\WorkflowManager.Common.Dto.csproj">
-      <Project>{bd0cec4e-2cac-466e-ad3e-7b200acc13a0}</Project>
-      <Name>WorkflowManager.Common.Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WorkflowManager.Common.EF6\WorkflowManager.Common.EF6.csproj">
-      <Project>{ca7561e6-28a3-4450-a297-bbe8272d1446}</Project>
-      <Name>WorkflowManager.Common.EF6</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WorkflowManager.Common.Helper\WorkflowManager.Common.Helper.csproj">
-      <Project>{10e52f09-c068-45ab-86e2-26e0c3ba05b4}</Project>
-      <Name>WorkflowManager.Common.Helper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WorkflowManager.Common.Mvc\WorkflowManager.Common.Mvc.csproj">
-      <Project>{f6977498-39e1-4950-868d-06371b854993}</Project>
-      <Name>WorkflowManager.Common.Mvc</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="EF6\ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
