@@ -12,6 +12,7 @@ using WorkFlowManager.Common.DataAccess._Context;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.DataAccess.Repositories;
 using WorkFlowManager.Common.Enums;
+using WorkFlowManager.Common.Factory;
 using WorkFlowManager.Common.Tables;
 using WorkFlowManager.Common.ViewModels;
 using WorkFlowManager.Services.CustomForms;
@@ -164,6 +165,10 @@ namespace WorkFlowManager.Web
 
             builder.RegisterType<WorkFlowUtil2>()
         .As<IWorkFlowUtil>()
+        .InstancePerLifetimeScope();
+            
+            builder.RegisterType<ProcessFactory2>()
+        .As<IProcessFactory>()
         .InstancePerLifetimeScope();
 
             

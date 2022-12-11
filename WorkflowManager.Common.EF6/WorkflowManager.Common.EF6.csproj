@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
-    <Compile Include="DataAccess\Repositories\IDbContext.cs" />
     <Compile Include="DataAccess\Repositories\IRepository.cs" />
     <Compile Include="DataAccess\_Context\ApplicationDbContext.cs" />
     <Compile Include="Tables\NewFolder1\ApplicationUser.cs" />
@@ -86,8 +85,6 @@
     <Compile Include="Enums\SystemMessage.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Factory\ProcessFactory.cs" />
-    <Compile Include="Factory\TaskVariable.cs" />
     <Compile Include="Mapping\BaseTableMap.cs" />
     <Compile Include="Mapping\BaseTableTableMap.cs" />
     <Compile Include="Mapping\BusinessProcessMap.cs" />

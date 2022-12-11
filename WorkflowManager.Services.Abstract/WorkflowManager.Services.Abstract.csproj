@@ -80,6 +80,7 @@
     <Compile Include="DbServicesAbstract\IWorkFlowDataService.cs" />
     <Compile Include="DbServicesAbstract\IWorkFlowProcessService.cs" />
     <Compile Include="DbServicesAbstract\IWorkFlowService.cs" />
+    <Compile Include="Factory\IProcessFactory.cs" />
     <Compile Include="IGlobal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -15,10 +15,12 @@ namespace WorkFlowManager.Services.DbServices
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWorkFlowUtil _workFlowUtil;
-        public WorkFlowService(IUnitOfWork unitOfWork, IWorkFlowUtil workFlowUtil)
+        private readonly IProcessFactory _processFactory;
+        public WorkFlowService(IUnitOfWork unitOfWork, IWorkFlowUtil workFlowUtil, IProcessFactory processFactory)
         {
             _unitOfWork = unitOfWork;
             _workFlowUtil = workFlowUtil;
+            _processFactory = processFactory;
         }
 
         public IEnumerable<WorkFlow> GetWorkFlowList()
@@ -144,8 +146,8 @@ namespace WorkFlowManager.Services.DbServices
                 _unitOfWork.Repository<T>().Add(processRecorded);
                 if (processRecorded.GetType() == typeof(DecisionPoint))
                 {
-                    var optionYes = ProcessFactory.CreateDecisionPointYesOption("Yes", (DecisionPoint)(object)processRecorded);
-                    var optionNo = ProcessFactory.CreateDecisionPointNoOption("No", (DecisionPoint)(object)processRecorded);
+                    var optionYes = _processFactory.CreateDecisionPointYesOption("Yes", (DecisionPoint)(object)processRecorded);
+                    var optionNo = _processFactory.CreateDecisionPointNoOption("No", (DecisionPoint)(object)processRecorded);
 
                     _unitOfWork.Repository<ConditionOption>().Add(optionYes);
                     _unitOfWork.Repository<ConditionOption>().Add(optionNo);
