@@ -104,10 +104,6 @@
       <Project>{ca7561e6-28a3-4450-a297-bbe8272d1446}</Project>
       <Name>WorkflowManager.Common.EF6</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WorkflowManager.Common.Helper\WorkflowManager.Common.Helper.csproj">
-      <Project>{10e52f09-c068-45ab-86e2-26e0c3ba05b4}</Project>
-      <Name>WorkflowManager.Common.Helper</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
