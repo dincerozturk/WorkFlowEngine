@@ -687,13 +687,13 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WorkflowManager.Common.EF6\WorkflowManager.Common.EF6.csproj">
+      <Project>{ca7561e6-28a3-4450-a297-bbe8272d1446}</Project>
+      <Name>WorkflowManager.Common.EF6</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkFlowManager.Common\WorkFlowManager.Common.csproj">
       <Project>{619910d1-5409-4798-a643-03fd8270e01c}</Project>
       <Name>WorkFlowManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WorkflowManager.EF6\WorkflowManager.EF6.csproj">
-      <Project>{7fedd1a1-ba8a-4062-8a48-9004a624b0a5}</Project>
-      <Name>WorkflowManager.EF6</Name>
     </ProjectReference>
     <ProjectReference Include="..\WorkFlowManager.Services\WorkFlowManager.Services.csproj">
       <Project>{40a870b8-9178-4cab-9ad0-039fbb39a072}</Project>
