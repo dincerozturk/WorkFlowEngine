@@ -441,9 +441,11 @@
     <Compile Include="Controllers\WorkFlowController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WorkFlowProcessController.cs" />
+    <Compile Include="Extensions\ExtensionsMvc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InfraStructure\MultipleButtonAttribute.cs" />
     <Compile Include="Infra\WorkFlowFormModelBinder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
