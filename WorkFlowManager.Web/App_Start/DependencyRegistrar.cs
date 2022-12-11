@@ -163,11 +163,11 @@ namespace WorkFlowManager.Web
         .As<IGlobal>()
         .InstancePerLifetimeScope();
 
-            builder.RegisterType<WorkFlowUtil2>()
+            builder.RegisterType<WorkFlowUtil>()
         .As<IWorkFlowUtil>()
         .InstancePerLifetimeScope();
             
-            builder.RegisterType<ProcessFactory2>()
+            builder.RegisterType<ProcessFactory>()
         .As<IProcessFactory>()
         .InstancePerLifetimeScope();
 

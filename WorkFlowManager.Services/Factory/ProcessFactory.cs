@@ -6,7 +6,7 @@ using WorkFlowManager.Common.Tables;
 
 namespace WorkFlowManager.Common.Factory
 {
-    public class ProcessFactory2 : IProcessFactory
+    public class ProcessFactory : IProcessFactory
     {
         public Process CreateProcess(Task task, string name, ProjectRole assignedRole, string description = null, FormView formView = null)
         {

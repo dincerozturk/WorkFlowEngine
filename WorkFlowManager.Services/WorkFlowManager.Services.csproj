@@ -114,7 +114,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\WorkFlowUtil2.cs" />
+    <Compile Include="Constants\WorkFlowUtil.cs" />
     <Compile Include="CustomForms\HealthInformationWorkFlowForm.cs" />
     <Compile Include="CustomForms\TestWorkFlowForm.cs" />
     <Compile Include="DbServices\DocumentService.cs" />
@@ -126,7 +126,7 @@
     <Compile Include="DbServices\WorkFlowProcessService.cs" />
     <Compile Include="DbServices\WorkFlowService.cs" />
     <Compile Include="DbServices\DecisionMethodService.cs" />
-    <Compile Include="Factory\ProcessFactory2.cs" />
+    <Compile Include="Factory\ProcessFactory.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Helper\ValidationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
