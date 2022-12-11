@@ -69,10 +69,6 @@
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
     <Compile Include="DataAccess\Repositories\IRepository.cs" />
     <Compile Include="DataAccess\_Context\ApplicationDbContext.cs" />
-    <Compile Include="Tables\NewFolder1\ApplicationUser.cs" />
-    <Compile Include="DataAccess\_Context\DataContext.cs" />
-    <Compile Include="DataAccess\_UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="DataAccess\_UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Enums\FileType.cs" />
     <Compile Include="Enums\FormComplexity.cs" />
     <Compile Include="Enums\Gender.cs" />
@@ -84,6 +80,10 @@
     <Compile Include="Enums\RegistrationStatus.cs" />
     <Compile Include="Enums\SystemMessage.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Tables\NewFolder1\ApplicationUser.cs" />
+    <Compile Include="DataAccess\_Context\DataContext.cs" />
+    <Compile Include="DataAccess\_UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="DataAccess\_UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Mapping\BaseTableMap.cs" />
     <Compile Include="Mapping\BaseTableTableMap.cs" />

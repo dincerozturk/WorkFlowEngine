@@ -12,7 +12,7 @@ namespace WorkFlowManager.Common.Tables
         public int? ConditionOptionId { get; set; }
         public virtual ConditionOption ConditionOption { get; set; }
         public string Description { get; set; }
-        public virtual ProcessStatus ProcessStatus { get; set; }
+        public int ProcessStatus { get; set; }
         public string JobId { get; set; }
 
         public bool IsCondition => Process.GetType() == typeof(Condition);

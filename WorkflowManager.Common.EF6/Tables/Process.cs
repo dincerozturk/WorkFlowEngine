@@ -7,7 +7,7 @@ namespace WorkFlowManager.Common.Tables
 {
     public class Process : BaseTable
     {
-        public virtual ProjectRole AssignedRole { get; set; }
+        public int AssignedRole { get; set; }
         public int? FormViewId { get; set; }
         public virtual FormView FormView { get; set; }
         public virtual ICollection<ProcessMonitoringRole> ProcessMonitoringRoles { get; set; }
@@ -35,7 +35,7 @@ namespace WorkFlowManager.Common.Tables
         {
             Task = task;
             Name = name;
-            AssignedRole = assignedRole;
+            AssignedRole = (int)assignedRole;
             Description = description;
             FormView = formView;
             ProcessUniqueCode = Guid.NewGuid().ToString();

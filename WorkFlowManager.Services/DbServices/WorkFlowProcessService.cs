@@ -64,7 +64,7 @@ namespace WorkFlowManager.Services.DbServices
             {
                 ProcessId = (int)task.StartingProcessId,
                 OwnerId = ownerId,
-                ProcessStatus = Common.Enums.ProcessStatus.Draft
+                ProcessStatus = (int)ProcessStatus.Draft
             };
             AddOrUpdate(workFlowTrace);
             return workFlowTrace.Id;
@@ -497,7 +497,7 @@ namespace WorkFlowManager.Services.DbServices
         {
             WorkFlowTrace WorkFlowTrace = _unitOfWork.Repository<WorkFlowTrace>().Get(workFlowTraceId);
 
-            WorkFlowTrace.ProcessStatus = ProcessStatus.Cancelled;
+            WorkFlowTrace.ProcessStatus = (int)ProcessStatus.Cancelled;
 
             AddOrUpdate(WorkFlowTrace);
 
@@ -563,7 +563,7 @@ namespace WorkFlowManager.Services.DbServices
             }
 
             WorkFlowTrace workFlowTraceCurrentDB = _unitOfWork.Repository<WorkFlowTrace>().Get(userProcessVMCurrent.Id);
-            workFlowTraceCurrentDB.ProcessStatus = Common.Enums.ProcessStatus.Completed;
+            workFlowTraceCurrentDB.ProcessStatus = (int)ProcessStatus.Completed;
 
             AddOrUpdate(workFlowTraceCurrentDB);
 
@@ -595,7 +595,7 @@ namespace WorkFlowManager.Services.DbServices
                     foreach (var subFlow in allSubFlowsExceptCurrent)
                     {
 
-                        var draftProcess = _unitOfWork.Repository<WorkFlowTrace>().GetAll().FirstOrDefault(x => x.OwnerId == subFlow.Id && x.ProcessStatus == ProcessStatus.Draft);
+                        var draftProcess = _unitOfWork.Repository<WorkFlowTrace>().GetAll().FirstOrDefault(x => x.OwnerId == subFlow.Id && x.ProcessStatus == (int)ProcessStatus.Draft);
                         allSubProcessCompleted = draftProcess == null;
                         if (!allSubProcessCompleted)
                         {
@@ -628,7 +628,7 @@ namespace WorkFlowManager.Services.DbServices
             {
                 ProcessId = targetProcess.Id,
                 OwnerId = ownerId,
-                ProcessStatus = ProcessStatus.Draft
+                ProcessStatus = (int)ProcessStatus.Draft
             };
             AddOrUpdate(workFlowTrace);
 

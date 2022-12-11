@@ -202,7 +202,7 @@ namespace WorkFlowManager.Web
                         opt => opt.MapFrom(c => c.MonitoringRoleCheckboxes.Where(x => x.IsChecked == true).Select(t => new ProcessMonitoringRole
                         {
                             ProcessId = c.Id,
-                            ProjectRole = t.ProjectRole
+                            ProjectRole = (int)t.ProjectRole
                         })));
 
                 cfg.CreateMap<ProcessForm, Condition>()

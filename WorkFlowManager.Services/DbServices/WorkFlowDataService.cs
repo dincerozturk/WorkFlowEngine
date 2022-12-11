@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
+using WorkFlowManager.Common.Enums;
 using WorkFlowManager.Common.Tables;
 using WorkFlowManager.Common.ViewModels;
 
@@ -49,11 +50,11 @@ namespace WorkFlowManager.Services.DbServices
                 new UserProcessViewModel
                 {
                     Id = workFlowTrace.Id,
-                    ProcessStatus = workFlowTrace.ProcessStatus,
+                    ProcessStatus = (ProcessStatus)workFlowTrace.ProcessStatus,
                     OwnerId = workFlowTrace.OwnerId,
                     ProcessId = workFlowTrace.ProcessId,
                     ProcessVariableName = (workFlowTrace.Process.GetType() == typeof(Condition) || workFlowTrace.Process.GetType() == typeof(DecisionPoint) ? ((Condition)workFlowTrace.Process).VariableName : null),
-                    AssignedRole = workFlowTrace.Process.AssignedRole,
+                    AssignedRole = (ProjectRole)workFlowTrace.Process.AssignedRole,
                     Description = workFlowTrace.Description,
                     ProcessName = workFlowTrace.Process.Name,
                     Controller = workFlowTrace.Process.Task.Controller,

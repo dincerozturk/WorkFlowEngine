@@ -6,6 +6,6 @@ namespace WorkFlowManager.Common.Tables
     {
         public int ProcessId { get; set; }
         public virtual Process Process { get; set; }
-        public virtual ProjectRole ProjectRole { get; set; }
+        public int ProjectRole { get; set; }
     }
 }

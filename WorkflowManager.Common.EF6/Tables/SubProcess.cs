@@ -10,7 +10,7 @@ namespace WorkFlowManager.Common.Tables
         {
             Task = task;
             Name = name;
-            AssignedRole = ProjectRole.System;
+            AssignedRole = (int)ProjectRole.System;
             ProcessUniqueCode = Guid.NewGuid().ToString();
             Documents = new HashSet<Document>();
             TaskVariableList = taskVariableList;

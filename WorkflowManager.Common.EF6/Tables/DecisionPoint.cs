@@ -12,7 +12,7 @@ namespace WorkFlowManager.Common.Tables
         {
             DecisionMethod = decisionMethod;
             RepetitionFrequenceByHour = repetitionFrequenceByHour;
-            AssignedRole = ProjectRole.System;
+            AssignedRole = (int)ProjectRole.System;
             task.AddProcess(this);
         }
 

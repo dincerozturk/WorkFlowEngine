@@ -184,7 +184,7 @@ namespace WorkFlowManager.Web.Controllers
                 if (condition != null)
                 {
                     formData.ConditionName = condition.Name;
-                    formData.AssignedRole = condition.AssignedRole;
+                    formData.AssignedRole = (ProjectRole)condition.AssignedRole;
                 }
             }
             else
