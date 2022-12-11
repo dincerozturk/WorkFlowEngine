@@ -258,7 +258,7 @@
 
                         <ul class="tag-select">
                             @{ 
-                                    var izleyenRoller = Model.MonitoringRoleList.OrderBy(x => x.ProjectRole.GetDisplayValue()).ToList();
+                                    var izleyenRoller = Model.MonitoringRoleCheckboxes.OrderBy(x => x.ProjectRole.GetDisplayValue()).ToList();
                                     for (var i = 0; i < izleyenRoller.Count(); i++)
                                     {
                                         var izleyenRol = izleyenRoller[i];

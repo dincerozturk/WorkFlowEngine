@@ -11,10 +11,10 @@ namespace WorkFlowManager.Services.CustomForms
 {
     public class HealthInformationWorkFlowForm : IHealthInformationWorkFlowForm
     {
-        private readonly TestWorkFlowProcessService _testWorkFlowProcessService;
+        private readonly ITestWorkFlowProcessService _testWorkFlowProcessService;
         private readonly IUnitOfWork _unitOfWork;
 
-        public HealthInformationWorkFlowForm(IUnitOfWork unitOfWork, TestWorkFlowProcessService testWorkFlowProcessService)
+        public HealthInformationWorkFlowForm(IUnitOfWork unitOfWork, ITestWorkFlowProcessService testWorkFlowProcessService)
         {
             _unitOfWork = unitOfWork;
             _testWorkFlowProcessService = testWorkFlowProcessService;

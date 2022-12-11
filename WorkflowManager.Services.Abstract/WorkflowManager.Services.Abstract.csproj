@@ -34,6 +34,9 @@
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -65,7 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Constants\IWorkFlowForm.cs" />
     <Compile Include="Constants\IWorkFlowUtil.cs" />
     <Compile Include="CustomFormsAbstract\IHealthInformationWorkFlowForm.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="DbServicesAbstract\IWorkFlowProcessService.cs" />
     <Compile Include="DbServicesAbstract\IWorkFlowService.cs" />
     <Compile Include="Factory\IProcessFactory.cs" />
+    <Compile Include="Helper\IValidationHelper.cs" />
     <Compile Include="IGlobal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

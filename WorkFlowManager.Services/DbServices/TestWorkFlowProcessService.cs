@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.Tables;
 using WorkFlowManager.Common.ViewModels;
+using WorkFlowManager.Helper;
 
 namespace WorkFlowManager.Services.DbServices
 {
@@ -13,8 +14,8 @@ namespace WorkFlowManager.Services.DbServices
         private readonly WorkFlowDataService _workFlowDataService;
 
         public TestWorkFlowProcessService(
-                IUnitOfWork unitOfWork, WorkFlowDataService workFlowDataService)
-                : base(unitOfWork, workFlowDataService)
+                IUnitOfWork unitOfWork, WorkFlowDataService workFlowDataService, IValidationHelper validationHelper)
+                : base(unitOfWork, workFlowDataService, validationHelper)
         {
             _unitOfWork = unitOfWork;
             _workFlowDataService = workFlowDataService;

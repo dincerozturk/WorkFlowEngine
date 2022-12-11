@@ -16,7 +16,9 @@ namespace WorkFlowManager.Web.Controllers
         private readonly IWorkFlowProcessService _workFlowProcessService;
         private readonly IWorkFlowService _workFlowService;
 
-        public WorkFlowProcessController(IWorkFlowProcessService workFlowProcessService, IWorkFlowService workFlowService
+        public WorkFlowProcessController(
+            IWorkFlowProcessService workFlowProcessService
+            , IWorkFlowService workFlowService
 
             )
         {

@@ -6,10 +6,10 @@ using WorkFlowManager.Common.Tables;
 
 namespace WorkFlowManager.Common.Constants
 {
-    public class WorkFlowUtil2 : IWorkFlowUtil
+    public class WorkFlowUtil : IWorkFlowUtil
     {
         private readonly IUnitOfWork _unitOfWork;
-        public WorkFlowUtil2(IUnitOfWork unitOfWork)
+        public WorkFlowUtil(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

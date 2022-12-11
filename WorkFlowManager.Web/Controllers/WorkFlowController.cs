@@ -23,16 +23,20 @@ namespace WorkFlowManager.Web.Controllers
         private readonly IFormService _formService;
         private readonly IDecisionMethodService _decisionMethodService;
         private readonly IGlobal _global;
+        private readonly IValidationHelper _validationHelper;
 
         public WorkFlowController(IUnitOfWork unitOfWork, IWorkFlowService workFlowService
             , IFormService formService
-            , IDecisionMethodService decisionMethodService, IGlobal global)
+            , IDecisionMethodService decisionMethodService
+            , IGlobal global
+            , IValidationHelper validationHelper)
         {
             _unitOfWork = unitOfWork;
             _workFlowService = workFlowService;
             _formService = formService;
             _decisionMethodService = decisionMethodService;
             _global = global;
+            _validationHelper = validationHelper;
         }
 
         [HttpPost, ValidateAntiForgeryToken, ValidateInput(false)]
@@ -84,7 +88,7 @@ namespace WorkFlowManager.Web.Controllers
                 formData = ProcessFormLoad(formData);
             }
 
-            bool result = ValidationHelper.Validate(formData, new ProcessFormValidator(_unitOfWork), ModelState);
+            bool result = _validationHelper.Validate(formData, new ProcessFormValidator(_unitOfWork), ModelState);
 
             if (result == false)
             {

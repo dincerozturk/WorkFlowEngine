@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkFlowManager.Services", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkFlowManager.Web", "WorkFlowManager.Web\WorkFlowManager.Web.csproj", "{6E9AB0AE-EADC-4C6B-BFE3-404E1F0BAF3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkFlowEngine.Core", "WorkFlowEngine.Core\WorkFlowEngine.Core.csproj", "{B6A7C5C3-B24E-48A5-A9C6-8CE66F0A17A8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager.Common.EF6", "WorkflowManager.Common.EF6\WorkflowManager.Common.EF6.csproj", "{CA7561E6-28A3-4450-A297-BBE8272D1446}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager.Common.Dto", "WorkflowManager.Common.Dto\WorkflowManager.Common.Dto.csproj", "{BD0CEC4E-2CAC-466E-AD3E-7B200ACC13A0}"
@@ -35,10 +33,6 @@ Global
 		{6E9AB0AE-EADC-4C6B-BFE3-404E1F0BAF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E9AB0AE-EADC-4C6B-BFE3-404E1F0BAF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E9AB0AE-EADC-4C6B-BFE3-404E1F0BAF3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6A7C5C3-B24E-48A5-A9C6-8CE66F0A17A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6A7C5C3-B24E-48A5-A9C6-8CE66F0A17A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6A7C5C3-B24E-48A5-A9C6-8CE66F0A17A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6A7C5C3-B24E-48A5-A9C6-8CE66F0A17A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA7561E6-28A3-4450-A297-BBE8272D1446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA7561E6-28A3-4450-A297-BBE8272D1446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA7561E6-28A3-4450-A297-BBE8272D1446}.Release|Any CPU.ActiveCfg = Release|Any CPU

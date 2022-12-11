@@ -87,11 +87,11 @@
     <Compile Include="Dto\ViewModels\WorkFlowTestModel.cs" />
     <Compile Include="Dto\ViewModels\WorkFlowTraceVM.cs" />
     <Compile Include="Dto\ViewModels\WorkFlowViewModel.cs" />
+    <Compile Include="Dto\ViewModels\WorkFlowViewModelMVC.cs" />
     <Compile Include="Dto\WorlFlowDto.cs" />
     <Compile Include="InfraStructure\PagedData.cs" />
-    <Compile Include="Mappers\ProcessMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskVariable.cs" />
+    <Compile Include="Dto\TaskVariable.cs" />
     <Compile Include="Validation\DecisionMethodValidation.cs" />
     <Compile Include="Validation\FormViewValidation.cs" />
     <Compile Include="Validation\ProcessFormValidator.cs" />
@@ -107,6 +107,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mappers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -12,13 +12,15 @@ namespace WorkFlowManager.Services.CustomForms
 {
     public class TestWorkFlowForm : ITestWorkFlowForm
     {
-        private readonly TestWorkFlowProcessService _testWorkFlowProcessService;
+        private readonly ITestWorkFlowProcessService _testWorkFlowProcessService;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IValidationHelper _validationHelper;
 
-        public TestWorkFlowForm(IUnitOfWork unitOfWork, TestWorkFlowProcessService testWorkFlowProcessService)
+        public TestWorkFlowForm(IUnitOfWork unitOfWork, ITestWorkFlowProcessService testWorkFlowProcessService, IValidationHelper validationHelper)
         {
             _unitOfWork = unitOfWork;
             _testWorkFlowProcessService = testWorkFlowProcessService;
+            _validationHelper = validationHelper;
         }
 
         public void Save(WorkFlowFormViewModel formData)
@@ -28,7 +30,7 @@ namespace WorkFlowManager.Services.CustomForms
 
         public bool Validate(WorkFlowFormViewModel formData, ModelStateDictionary modelState)
         {
-            return ValidationHelper.Validate((TestWorkFlowFormViewModel)formData, new TestWorkFlowFormViewModelValidator(_unitOfWork), modelState);
+            return _validationHelper.Validate((TestWorkFlowFormViewModel)formData, new TestWorkFlowFormViewModelValidator(_unitOfWork), modelState);
         }
 
         public WorkFlowFormViewModel Load(WorkFlowFormViewModel workFlowFormViewModel)

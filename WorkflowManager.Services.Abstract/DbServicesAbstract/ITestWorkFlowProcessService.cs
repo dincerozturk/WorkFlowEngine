@@ -7,7 +7,7 @@ using WorkFlowManager.Common.ViewModels;
 
 namespace WorkFlowManager.Services.DbServices
 {
-    public interface ITestWorkFlowProcessService : IWorkFlowProcessService, IWorkFlow
+    public interface ITestWorkFlowProcessService : IWorkFlowProcessService//, IWorkFlow
     {
         #region Decission Methods
         //private int GetOwnerIdFromId(int id);

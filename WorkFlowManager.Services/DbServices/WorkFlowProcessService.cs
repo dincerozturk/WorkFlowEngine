@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using WorkFlowManager.Common.Constants;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.Dto;
@@ -20,15 +21,19 @@ namespace WorkFlowManager.Services.DbServices
     public class WorkFlowProcessService : IWorkFlowProcessService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly WorkFlowDataService _workFlowDataService;
+        private readonly IWorkFlowDataService _workFlowDataService;
+        private readonly IValidationHelper _validationHelper;
         public Dictionary<string, IWorkFlowForm> workFlowFormList = new Dictionary<string, IWorkFlowForm>();
 
         //public void FormSave(WorkFlowFormViewModel formData);
 
-        public WorkFlowProcessService(IUnitOfWork unitOfWork, WorkFlowDataService workFlowDataService)
+        public WorkFlowProcessService(IUnitOfWork unitOfWork
+            , IWorkFlowDataService workFlowDataService
+            , IValidationHelper validationHelper)
         {
             _unitOfWork = unitOfWork;
             _workFlowDataService = workFlowDataService;
+            _validationHelper = validationHelper;
         }
 
         public int GetOwnerIdFromId(int id)
@@ -748,7 +753,7 @@ namespace WorkFlowManager.Services.DbServices
 
         public bool StandartFormValidate(WorkFlowFormViewModel formData, ModelStateDictionary modelState)
         {
-            return ValidationHelper.Validate(formData, new WorkFlowFormViewModelValidator(_unitOfWork), modelState);
+            return _validationHelper.Validate(formData, new WorkFlowFormViewModelValidator(_unitOfWork), modelState);
         }
 
         public bool FullFormValidate(WorkFlowFormViewModel formData, ModelStateDictionary modelState)

@@ -4,17 +4,18 @@ using System.Web.Mvc;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.Tables;
 using WorkFlowManager.Common.ViewModels;
+using WorkFlowManager.Helper;
 
 namespace WorkFlowManager.Services.DbServices
 {
     public class PurchasingWorkFlowProcessService : WorkFlowProcessService, IPurchasingWorkFlowProcessService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly WorkFlowDataService _workFlowDataService;
+        private readonly IWorkFlowDataService _workFlowDataService;
 
         public PurchasingWorkFlowProcessService(
-                IUnitOfWork unitOfWork, WorkFlowDataService workFlowDataService)
-                : base(unitOfWork, workFlowDataService)
+                IUnitOfWork unitOfWork, IWorkFlowDataService workFlowDataService, IValidationHelper validationHelper)
+                : base(unitOfWork, workFlowDataService, validationHelper)
         {
             _unitOfWork = unitOfWork;
             _workFlowDataService = workFlowDataService;

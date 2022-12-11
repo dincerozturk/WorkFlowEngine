@@ -15,6 +15,7 @@ using WorkFlowManager.Common.Enums;
 using WorkFlowManager.Common.Factory;
 using WorkFlowManager.Common.Tables;
 using WorkFlowManager.Common.ViewModels;
+using WorkFlowManager.Helper;
 using WorkFlowManager.Services.CustomForms;
 using WorkFlowManager.Services.DbServices;
 
@@ -171,8 +172,10 @@ namespace WorkFlowManager.Web
         .As<IProcessFactory>()
         .InstancePerLifetimeScope();
 
-            
 
+            builder.RegisterType<ValidationHelper>()
+       .As<IValidationHelper>()
+       .InstancePerLifetimeScope();
             #endregion
 
             var container = builder.Build();

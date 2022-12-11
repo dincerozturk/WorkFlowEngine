@@ -21,10 +21,6 @@ namespace WorkFlowManager.Web.Controllers
         private ApplicationSignInManager SignInManager;
         private ApplicationUserManager UserManager;
 
-        public AccountController()
-        {
-        }
-
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
