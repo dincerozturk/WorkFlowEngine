@@ -8,7 +8,7 @@ using WorkFlowManager.Common.ViewModels;
 
 namespace WorkFlowManager.Services.DbServices
 {
-    public class FormService : IDisposable
+    public class FormService : IFormService
     {
         private readonly IUnitOfWork _unitOfWork;
         public FormService(IUnitOfWork unitOfWork)

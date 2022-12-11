@@ -10,7 +10,7 @@ using WorkFlowManager.Services.DbServices;
 
 namespace WorkFlowManager.Services.CustomForms
 {
-    public class TestWorkFlowForm : IWorkFlowForm
+    public class TestWorkFlowForm : ITestWorkFlowForm
     {
         private readonly TestWorkFlowProcessService _testWorkFlowProcessService;
         private readonly IUnitOfWork _unitOfWork;

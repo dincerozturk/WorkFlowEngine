@@ -7,7 +7,7 @@ using WorkFlowManager.Common.ViewModels;
 
 namespace WorkFlowManager.Services.DbServices
 {
-    public class PurchasingWorkFlowProcessService : WorkFlowProcessService, IWorkFlow
+    public class PurchasingWorkFlowProcessService : WorkFlowProcessService, IPurchasingWorkFlowProcessService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly WorkFlowDataService _workFlowDataService;
@@ -19,14 +19,6 @@ namespace WorkFlowManager.Services.DbServices
             _unitOfWork = unitOfWork;
             _workFlowDataService = workFlowDataService;
         }
-
-
-        #region Decission Methods
-
-
-
-
-        #endregion
 
         #region Workflow
 
@@ -41,12 +33,12 @@ namespace WorkFlowManager.Services.DbServices
             base.CustomFormSave(formData);
         }
 
-        public override void WorkFlowFormSave<TClass, TVM>(WorkFlowFormViewModel workFlowFormViewModel)
-        {
-            base.WorkFlowFormSave<TClass, TVM>(workFlowFormViewModel);
-            WorkFlowTrace torSatinAlmaIslem = Mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(workFlowFormViewModel);
-            AddOrUpdate(torSatinAlmaIslem);
-        }
+        //public override void WorkFlowFormSave<TClass, TVM>(WorkFlowFormViewModel workFlowFormViewModel)
+        //{
+        //    base.WorkFlowFormSave<TClass, TVM>(workFlowFormViewModel);
+        //    WorkFlowTrace torSatinAlmaIslem = Mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(workFlowFormViewModel);
+        //    AddOrUpdate(torSatinAlmaIslem);
+        //}
 
         public override void WorkFlowProcessCancel(int workFlowTraceId)
         {

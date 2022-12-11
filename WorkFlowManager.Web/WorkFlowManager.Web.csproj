@@ -703,9 +703,9 @@
       <Project>{f6977498-39e1-4950-868d-06371b854993}</Project>
       <Name>WorkflowManager.Common.Mvc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WorkFlowManager.Common\WorkFlowManager.Common.csproj">
-      <Project>{619910d1-5409-4798-a643-03fd8270e01c}</Project>
-      <Name>WorkFlowManager.Common</Name>
+    <ProjectReference Include="..\WorkflowManager.Services.Abstract\WorkflowManager.Services.Abstract.csproj">
+      <Project>{91fda24a-d5db-49e0-97a1-0c54a5f1d7fd}</Project>
+      <Name>WorkflowManager.Services.Abstract</Name>
     </ProjectReference>
     <ProjectReference Include="..\WorkFlowManager.Services\WorkFlowManager.Services.csproj">
       <Project>{40a870b8-9178-4cab-9ad0-039fbb39a072}</Project>

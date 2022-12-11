@@ -9,7 +9,7 @@ using WorkFlowManager.Common.ViewModels;
 namespace WorkFlowManager.Services.DbServices
 {
 
-    public class DecisionMethodService : IDisposable
+    public class DecisionMethodService : IDecisionMethodService
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -23,7 +23,7 @@ namespace WorkFlowManager.Services.DbServices
             _unitOfWork.Dispose();
         }
 
-        private IList<DecisionMethodViewModel> GetAll(int taskId = 0)
+        public IList<DecisionMethodViewModel> GetAll(int taskId = 0)
         {
             IList<DecisionMethodViewModel> result = new List<DecisionMethodViewModel>();
 

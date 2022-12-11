@@ -9,7 +9,7 @@ using WorkFlowManager.Services.DbServices;
 
 namespace WorkFlowManager.Services.CustomForms
 {
-    public class HealthInformationWorkFlowForm : IWorkFlowForm
+    public class HealthInformationWorkFlowForm : IHealthInformationWorkFlowForm
     {
         private readonly TestWorkFlowProcessService _testWorkFlowProcessService;
         private readonly IUnitOfWork _unitOfWork;

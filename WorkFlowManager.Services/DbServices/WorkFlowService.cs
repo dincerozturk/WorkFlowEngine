@@ -11,7 +11,7 @@ using WorkFlowManager.Common.ViewModels;
 
 namespace WorkFlowManager.Services.DbServices
 {
-    public class WorkFlowService
+    public class WorkFlowService : IWorkFlowService
     {
         private readonly IUnitOfWork _unitOfWork;
         public WorkFlowService(IUnitOfWork unitOfWork)

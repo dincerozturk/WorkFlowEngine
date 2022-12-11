@@ -8,7 +8,7 @@ using WorkFlowManager.Common.ViewModels;
 namespace WorkFlowManager.Services.DbServices
 {
 
-    public class WorkFlowDataService
+    public class WorkFlowDataService : IWorkFlowDataService
     {
         private readonly IUnitOfWork _unitOfWork;
 

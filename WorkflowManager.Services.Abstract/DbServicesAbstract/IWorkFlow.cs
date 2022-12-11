@@ -9,12 +9,9 @@ namespace WorkFlowManager.Services.DbServices
 
         bool FormValidate(WorkFlowFormViewModel formData, ModelStateDictionary modelState);
 
-
         void FormSave(WorkFlowFormViewModel formData);
 
-
         string DecisionPointJobCall(string id, string jobId, string hourInterval);
-
 
         bool FullFormValidate(WorkFlowFormViewModel formData, ModelStateDictionary modelState);
 

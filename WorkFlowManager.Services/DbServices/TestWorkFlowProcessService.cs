@@ -7,7 +7,7 @@ using WorkFlowManager.Common.ViewModels;
 
 namespace WorkFlowManager.Services.DbServices
 {
-    public class TestWorkFlowProcessService : WorkFlowProcessService, IWorkFlow
+    public class TestWorkFlowProcessService : WorkFlowProcessService, ITestWorkFlowProcessService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly WorkFlowDataService _workFlowDataService;

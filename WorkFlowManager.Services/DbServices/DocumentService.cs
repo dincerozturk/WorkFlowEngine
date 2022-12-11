@@ -3,7 +3,7 @@ using WorkFlowManager.Common.Tables;
 
 namespace WorkFlowManager.Services.DbServices
 {
-    public class DocumentService
+    public class DocumentService : IDocumentService
     {
         private readonly IUnitOfWork _unitOfWork;
 

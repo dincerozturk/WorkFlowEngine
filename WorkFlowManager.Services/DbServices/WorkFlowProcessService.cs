@@ -17,7 +17,7 @@ using WorkFlowManager.Helper;
 
 namespace WorkFlowManager.Services.DbServices
 {
-    public class WorkFlowProcessService
+    public class WorkFlowProcessService : IWorkFlowProcessService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly WorkFlowDataService _workFlowDataService;
@@ -31,7 +31,7 @@ namespace WorkFlowManager.Services.DbServices
             _workFlowDataService = workFlowDataService;
         }
 
-        protected int GetOwnerIdFromId(int id)
+        public int GetOwnerIdFromId(int id)
         {
             var workFlowTrace = _unitOfWork.Repository<WorkFlowTrace>().Get(x => x.Id == id);
             int rslt = -1;
@@ -404,7 +404,6 @@ namespace WorkFlowManager.Services.DbServices
             }
             _unitOfWork.Complete();
         }
-
 
         public WorkFlowFormViewModel WorkFlowFormLoad(WorkFlowFormViewModel workFlowFormViewModel)
         {
