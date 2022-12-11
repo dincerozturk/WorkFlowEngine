@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA7561E6-28A3-4450-A297-BBE8272D1446}</ProjectGuid>
+    <ProjectGuid>{B126F615-A125-4794-9224-D7FBD991485A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WorkflowManager.Common.EF6</RootNamespace>
-    <AssemblyName>WorkflowManager.Common.EF6</AssemblyName>
+    <RootNamespace>WorkflowManager.Common.Validation</RootNamespace>
+    <AssemblyName>WorkflowManager.Common.Validation</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -45,15 +42,6 @@
     </Reference>
     <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -66,62 +54,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
-    <Compile Include="DataAccess\Repositories\IDbContext.cs" />
-    <Compile Include="DataAccess\Repositories\IRepository.cs" />
-    <Compile Include="DataAccess\_Context\DataContext.cs" />
-    <Compile Include="DataAccess\_UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="DataAccess\_UnitOfWork\UnitOfWork.cs" />
-    <Compile Include="Enums\FileType.cs" />
-    <Compile Include="Enums\FormComplexity.cs" />
-    <Compile Include="Enums\Gender.cs" />
-    <Compile Include="Enums\MessageDialogType.cs" />
-    <Compile Include="Enums\MessageType.cs" />
-    <Compile Include="Enums\ProcessStatus.cs" />
-    <Compile Include="Enums\ProcessType.cs" />
-    <Compile Include="Enums\ProjectRole.cs" />
-    <Compile Include="Enums\RegistrationStatus.cs" />
-    <Compile Include="Enums\SystemMessage.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Factory\ProcessFactory.cs" />
-    <Compile Include="Factory\TaskVariable.cs" />
-    <Compile Include="Mapping\BaseTableMap.cs" />
-    <Compile Include="Mapping\BaseTableTableMap.cs" />
-    <Compile Include="Mapping\BusinessProcessMap.cs" />
-    <Compile Include="Mapping\ConditionMap.cs" />
-    <Compile Include="Mapping\ConditionOptionMap.cs" />
-    <Compile Include="Mapping\DecisionMethodMap.cs" />
-    <Compile Include="Mapping\DecisionPointMap.cs" />
-    <Compile Include="Mapping\DocumentMap.cs" />
-    <Compile Include="Mapping\FormViewMap.cs" />
-    <Compile Include="Mapping\ProcessMap.cs" />
-    <Compile Include="Mapping\ProcessMonitoringRoleMap.cs" />
-    <Compile Include="Mapping\TaskMap.cs" />
-    <Compile Include="Mapping\TestFormMap.cs" />
-    <Compile Include="Mapping\WorkFlowMap.cs" />
-    <Compile Include="Mapping\WorkFlowTraceMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\BaseTable.cs" />
-    <Compile Include="Tables\BusinessProcess.cs" />
-    <Compile Include="Tables\Condition.cs" />
-    <Compile Include="Tables\ConditionOption.cs" />
-    <Compile Include="Tables\DecisionMethod.cs" />
-    <Compile Include="Tables\DecisionPoint.cs" />
-    <Compile Include="Tables\Document.cs" />
-    <Compile Include="Tables\FormView.cs" />
-    <Compile Include="Tables\Process.cs" />
-    <Compile Include="Tables\ProcessMonitoringRole.cs" />
-    <Compile Include="Tables\SubProcess.cs" />
-    <Compile Include="Tables\Task.cs" />
-    <Compile Include="Tables\TestForm.cs" />
-    <Compile Include="Tables\WorkFlow.cs" />
-    <Compile Include="Tables\WorkFlowEngineVariable.cs" />
-    <Compile Include="Tables\WorkFlowTrace.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorkflowManager.Common.Dto\WorkflowManager.Common.Dto.csproj">
+      <Project>{bd0cec4e-2cac-466e-ad3e-7b200acc13a0}</Project>
+      <Name>WorkflowManager.Common.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowManager.Common.EF6\WorkflowManager.Common.EF6.csproj">
+      <Project>{ca7561e6-28a3-4450-a297-bbe8272d1446}</Project>
+      <Name>WorkflowManager.Common.EF6</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

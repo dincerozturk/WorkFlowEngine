@@ -1,12 +1,13 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using System.Web.Mvc;
 
 namespace WorkFlowManager.Helper
 {
     public class ValidationHelper
     {
         public static bool Validate<TModel, TValidator>(TModel model, TValidator validator,
-            System.Web.Mvc.ModelStateDictionary modelState)
+            ModelStateDictionary modelState)
             where TValidator : AbstractValidator<TModel>
         {
             ValidationResult result = validator.Validate(model);
