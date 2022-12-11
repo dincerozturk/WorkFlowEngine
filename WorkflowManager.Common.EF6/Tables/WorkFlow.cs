@@ -2,7 +2,7 @@
 
 namespace WorkFlowManager.Common.Tables
 {
-    public class WorkFlow : BaseTable
+    public class WorkFlow : ABaseTable
     {
         public virtual ICollection<Task> Tasks { get; set; }
         public string Name { get; set; }

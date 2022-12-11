@@ -3,10 +3,10 @@ using WorkFlowManager.Common.Enums;
 
 namespace WorkFlowManager.Common.Tables
 {
-    public class WorkFlowTrace : BaseTable
+    public class WorkFlowTrace : ABaseTable
     {
         public int OwnerId { get; set; }
-        public virtual BaseTable Owner { get; set; }
+        public virtual ABaseTable Owner { get; set; }
         public int ProcessId { get; set; }
         public virtual Process Process { get; set; }
         public int? ConditionOptionId { get; set; }

@@ -16,7 +16,7 @@ namespace WorkFlowManager.Common.Tables
     }
 
 
-    public abstract class BaseTable : IBaseTable
+    public abstract class ABaseTable : IBaseTable
     {
         public int Id { get; set; }
         public DateTime CreatedTime { get; set; }

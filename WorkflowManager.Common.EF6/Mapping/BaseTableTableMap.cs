@@ -2,7 +2,7 @@
 
 namespace WorkFlowManager.Common.Mapping
 {
-    public class BaseTableTableMap : BaseTableMap<BaseTable>
+    public class BaseTableTableMap : BaseTableMap<ABaseTable>
     {
         public BaseTableTableMap()
         {

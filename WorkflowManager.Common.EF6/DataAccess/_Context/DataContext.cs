@@ -64,12 +64,12 @@ namespace WorkFlowManager.Common.DataAccess._Context
             {
 
                 var models = ChangeTracker.Entries()
-                .Where(x => x.Entity is BaseTable
+                .Where(x => x.Entity is ABaseTable
                 && x.State == EntityState.Added || x.State == EntityState.Modified);
 
                 foreach (var model in models)
                 {
-                    BaseTable table = model.Entity as BaseTable;
+                    ABaseTable table = model.Entity as ABaseTable;
                     if (table != null)
                     {
 

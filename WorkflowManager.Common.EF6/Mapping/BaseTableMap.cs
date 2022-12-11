@@ -4,7 +4,7 @@ using WorkFlowManager.Common.Tables;
 
 namespace WorkFlowManager.Common.Mapping
 {
-    public class BaseTableMap<T> : EntityTypeConfiguration<T> where T : BaseTable
+    public class BaseTableMap<T> : EntityTypeConfiguration<T> where T : ABaseTable
     {
         public BaseTableMap()
         {
