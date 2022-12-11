@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WorkflowManager.Common.EF6.DataAccess._Context;
 using WorkFlowManager.Web.Models;
 
 namespace WorkFlowManager.Web.Controllers

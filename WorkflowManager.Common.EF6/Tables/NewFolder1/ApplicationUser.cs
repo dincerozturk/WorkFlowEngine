@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WorkflowManager.Common.EF6.DataAccess._Context
+namespace WorkFlowManager.Web.Models
 {
     public class ApplicationUser : IdentityUser
     {

@@ -10,7 +10,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using WorkflowManager.Common.EF6.DataAccess._Context;
 using WorkFlowManager.Web.Models;
 
 namespace WorkFlowManager.Web

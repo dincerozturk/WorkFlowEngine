@@ -5,7 +5,6 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using WorkflowManager.Common.EF6.DataAccess._Context;
 using WorkFlowManager.Web.Models;
 
 namespace WorkFlowManager.Web
