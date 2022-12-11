@@ -19,16 +19,20 @@ namespace WorkFlowManager.Web.Controllers
 
         private const string ViewForm = "ProcessForm";
         private readonly IUnitOfWork _unitOfWork;
-        private readonly WorkFlowService _workFlowService;
-        private readonly FormService _formService;
-        private readonly DecisionMethodService _decisionMethodService;
+        private readonly IWorkFlowService _workFlowService;
+        private readonly IFormService _formService;
+        private readonly IDecisionMethodService _decisionMethodService;
+        private readonly IGlobal _global;
 
-        public WorkFlowController(IUnitOfWork unitOfWork, WorkFlowService workFlowService)
+        public WorkFlowController(IUnitOfWork unitOfWork, IWorkFlowService workFlowService
+            , IFormService formService
+            , IDecisionMethodService decisionMethodService, IGlobal global)
         {
             _unitOfWork = unitOfWork;
             _workFlowService = workFlowService;
-            _formService = new FormService(_unitOfWork);
-            _decisionMethodService = new DecisionMethodService(_unitOfWork);
+            _formService = formService;
+            _decisionMethodService = decisionMethodService;
+            _global = global;
         }
 
         [HttpPost, ValidateAntiForgeryToken, ValidateInput(false)]
@@ -167,7 +171,7 @@ namespace WorkFlowManager.Web.Controllers
             if (formData.ProcessType == ProcessType.OptionList || formData.ProcessType == ProcessType.Process || formData.ProcessType == ProcessType.SubProcess)
             {
                 var monitoringList = formData.MonitoringRoleCheckboxes;
-                formData.MonitoringRoleCheckboxes = Global.GetAllRoles().Select(rol => new MonitoringRoleCheckbox
+                formData.MonitoringRoleCheckboxes = _global.GetAllRoles().Select(rol => new MonitoringRoleCheckbox
                 {
                     ProjectRole = rol,
                     IsChecked = monitoringList != null ? monitoringList.Where(x => x.IsChecked == true).Any(t => t.ProjectRole == rol) : false

@@ -13,13 +13,15 @@ namespace WorkFlowManager.Web.Controllers
     public class WorkFlowProcessController : Controller
     {
 
-        private readonly WorkFlowProcessService _workFlowProcessService;
-        private readonly WorkFlowService _workFlowService;
+        private readonly IWorkFlowProcessService _workFlowProcessService;
+        private readonly IWorkFlowService _workFlowService;
 
-        public WorkFlowProcessController(WorkFlowProcessService workFlowProcessService)
+        public WorkFlowProcessController(IWorkFlowProcessService workFlowProcessService, IWorkFlowService workFlowService
+
+            )
         {
             _workFlowProcessService = workFlowProcessService;
-            _workFlowService = DependencyResolver.Current.GetService<WorkFlowService>();
+            _workFlowService = workFlowService;
         }
 
         public ActionResult GetProcess(int ownerId, int taskId)

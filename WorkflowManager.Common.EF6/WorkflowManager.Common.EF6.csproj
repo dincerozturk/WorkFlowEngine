@@ -69,6 +69,8 @@
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
     <Compile Include="DataAccess\Repositories\IDbContext.cs" />
     <Compile Include="DataAccess\Repositories\IRepository.cs" />
+    <Compile Include="DataAccess\_Context\ApplicationDbContext.cs" />
+    <Compile Include="Tables\NewFolder1\ApplicationUser.cs" />
     <Compile Include="DataAccess\_Context\DataContext.cs" />
     <Compile Include="DataAccess\_UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="DataAccess\_UnitOfWork\UnitOfWork.cs" />

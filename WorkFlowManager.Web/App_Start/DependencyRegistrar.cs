@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using AutoMapper;
 using Hangfire;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -103,7 +104,64 @@ namespace WorkFlowManager.Web
                 .AsSelf()
                 .InstancePerLifetimeScope();
 
+            #region MyRegion
+            builder.RegisterType<TestWorkFlowForm>()
+           .As<ITestWorkFlowForm>()
+           .InstancePerLifetimeScope();
 
+            builder.RegisterType<HealthInformationWorkFlowForm>()
+          .As<IHealthInformationWorkFlowForm>()
+          .InstancePerLifetimeScope();
+
+            builder.RegisterType<DecisionMethodService>()
+          .As<IDecisionMethodService>()
+          .InstancePerLifetimeScope();
+
+            builder.RegisterType<DocumentService>()
+          .As<IDocumentService>()
+          .InstancePerLifetimeScope();
+
+            builder.RegisterType<FormService>()
+          .As<IFormService>()
+          .InstancePerLifetimeScope();
+
+            builder.RegisterType<WorkFlowDataService>()
+          .As<IWorkFlowDataService>()
+          .InstancePerLifetimeScope();
+
+            builder.RegisterType<TestWorkFlowProcessService>()
+          .As<ITestWorkFlowProcessService>()
+          .InstancePerLifetimeScope();
+
+            builder.RegisterType<WorkFlowProcessService>()
+          .As<IWorkFlowProcessService>()
+          .InstancePerLifetimeScope();
+
+            builder.RegisterType<WorkFlowService>()
+         .As<IWorkFlowService>()
+         .InstancePerLifetimeScope();
+
+            builder.RegisterType<EmailService>()
+         .As<IEmailService>()
+         .InstancePerLifetimeScope();
+
+            builder.RegisterType<SmsService>()
+        .As<ISmsService>()
+        .InstancePerLifetimeScope();
+
+            builder.RegisterType<ApplicationUserManager>()
+        .As<IApplicationUserManager>()
+        .InstancePerLifetimeScope();
+
+            builder.RegisterType<ApplicationSignInManager>()
+        .As<IApplicationSignInManager>()
+        .InstancePerLifetimeScope();
+
+            builder.RegisterType<Global2>()
+        .As<IGlobal>()
+        .InstancePerLifetimeScope();
+
+            #endregion
 
             var container = builder.Build();
 

@@ -86,6 +86,7 @@
     <Compile Include="Dto\ViewModels\TemplateViewModel.cs" />
     <Compile Include="Dto\ViewModels\TestWorkFlowFormViewModel.cs" />
     <Compile Include="Dto\ViewModels\WorkFlowFormViewModel.cs" />
+    <Compile Include="Dto\ViewModels\WorkFlowTestModel.cs" />
     <Compile Include="Dto\ViewModels\WorkFlowTraceVM.cs" />
     <Compile Include="Dto\ViewModels\WorkFlowViewModel.cs" />
     <Compile Include="Dto\WorlFlowDto.cs" />

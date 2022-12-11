@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="CustomFormsAbstract\IHealthInformationWorkFlowForm.cs" />
     <Compile Include="CustomFormsAbstract\TestWorkFlowForm.cs" />
     <Compile Include="DbServicesAbstract\IDecisionMethodService.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="DbServicesAbstract\IWorkFlowDataService.cs" />
     <Compile Include="DbServicesAbstract\IWorkFlowProcessService.cs" />
     <Compile Include="DbServicesAbstract\IWorkFlowService.cs" />
+    <Compile Include="IGlobal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
