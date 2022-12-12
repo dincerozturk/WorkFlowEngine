@@ -12,13 +12,15 @@ namespace WorkFlowManager.Services.DbServices
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly WorkFlowDataService _workFlowDataService;
+        private readonly IMapper _mapper;
 
         public TestWorkFlowProcessService(
-                IUnitOfWork unitOfWork, WorkFlowDataService workFlowDataService, IValidationHelper validationHelper)
-                : base(unitOfWork, workFlowDataService, validationHelper)
+                IUnitOfWork unitOfWork, WorkFlowDataService workFlowDataService, IValidationHelper validationHelper, IMapper mapper)
+                : base(unitOfWork, workFlowDataService, validationHelper, mapper)
         {
             _unitOfWork = unitOfWork;
             _workFlowDataService = workFlowDataService;
+            _mapper = mapper;
         }
 
 
@@ -117,7 +119,7 @@ namespace WorkFlowManager.Services.DbServices
         public override void WorkFlowFormSave<TClass, TVM>(WorkFlowFormViewModel workFlowFormViewModel)
         {
             base.WorkFlowFormSave<TClass, TVM>(workFlowFormViewModel);
-            WorkFlowTrace torSatinAlmaIslem = Mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(workFlowFormViewModel);
+            WorkFlowTrace torSatinAlmaIslem = _mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(workFlowFormViewModel);
             AddOrUpdate(torSatinAlmaIslem);
         }
 

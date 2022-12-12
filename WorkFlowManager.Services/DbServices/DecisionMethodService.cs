@@ -11,11 +11,13 @@ namespace WorkFlowManager.Services.DbServices
 
     public class DecisionMethodService : IDecisionMethodService
     {
+        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public DecisionMethodService(IUnitOfWork unitOfWork)
+        public DecisionMethodService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public void Dispose()
@@ -60,12 +62,12 @@ namespace WorkFlowManager.Services.DbServices
             {
                 decisionMethodDB = new DecisionMethod();
 
-                Mapper.Map(decisionMethod, decisionMethodDB);
+                _mapper.Map(decisionMethod, decisionMethodDB);
                 _unitOfWork.Repository<DecisionMethod>().Add(decisionMethodDB);
             }
             else
             {
-                Mapper.Map(decisionMethod, decisionMethodDB);
+                _mapper.Map(decisionMethod, decisionMethodDB);
             }
 
             _unitOfWork.Complete();

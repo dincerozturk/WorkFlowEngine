@@ -15,15 +15,19 @@ namespace WorkFlowManager.Web.Controllers
 
         private readonly IWorkFlowProcessService _workFlowProcessService;
         private readonly IWorkFlowService _workFlowService;
+        private readonly IMapper _mapper;
 
         public WorkFlowProcessController(
             IWorkFlowProcessService workFlowProcessService
             , IWorkFlowService workFlowService
+,
+IMapper mapper
 
             )
         {
             _workFlowProcessService = workFlowProcessService;
             _workFlowService = workFlowService;
+            _mapper = mapper;
         }
 
         public ActionResult GetProcess(int ownerId, int taskId)
@@ -73,7 +77,7 @@ namespace WorkFlowManager.Web.Controllers
 
             WorkFlowTrace workFlowTrace = _workFlowProcessService.WorkFlowTraceDetail(workFlowTraceId);
 
-            WorkFlowFormViewModel workFlowTraceForm = Mapper.Map<WorkFlowTrace, WorkFlowFormViewModel>(workFlowTrace);
+            WorkFlowFormViewModel workFlowTraceForm = _mapper.Map<WorkFlowTrace, WorkFlowFormViewModel>(workFlowTrace);
             int ownerId = workFlowTraceForm.OwnerId;
             ActionResult viewResult = null;
 
@@ -104,7 +108,7 @@ namespace WorkFlowManager.Web.Controllers
                 return View(formData.ProcessTaskSpecialFormTemplateView, formData).WithMessage(this, "Error occured!", MessageType.Warning);
             }
 
-            WorkFlowTrace islem = Mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(formData);
+            WorkFlowTrace islem = _mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(formData);
             _workFlowProcessService.AddOrUpdate(islem);
 
             var workFlowTraceId = formData.Id;
@@ -129,7 +133,7 @@ namespace WorkFlowManager.Web.Controllers
                 else
                 {
 
-                    WorkFlowTrace torSatinAlmaIslem = Mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(formData);
+                    WorkFlowTrace torSatinAlmaIslem = _mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(formData);
                     _workFlowProcessService.AddOrUpdate(torSatinAlmaIslem);
                 }
 
@@ -170,7 +174,7 @@ namespace WorkFlowManager.Web.Controllers
                     return View(formData.ProcessTaskSpecialFormTemplateView, formData).WithMessage(this, "Validation error!", MessageType.Warning);
                 }
 
-                WorkFlowTrace workFlowTrace = Mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(formData);
+                WorkFlowTrace workFlowTrace = _mapper.Map<WorkFlowFormViewModel, WorkFlowTrace>(formData);
 
                 if (formData.ProcessFormViewCompleted)
                 {

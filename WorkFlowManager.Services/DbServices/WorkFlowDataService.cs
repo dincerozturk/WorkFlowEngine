@@ -12,14 +12,16 @@ namespace WorkFlowManager.Services.DbServices
     public class WorkFlowDataService : IWorkFlowDataService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public WorkFlowDataService(IUnitOfWork unitOfWork)
+        public WorkFlowDataService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
         public IEnumerable<ProcessVM> GetWorkFlowProcessList(int taskId)
         {
-            return Mapper.Map<IEnumerable<Process>, IEnumerable<ProcessVM>>(_unitOfWork.Repository<Process>().GetList(x => x.TaskId == taskId));
+            return _mapper.Map<IEnumerable<Process>, IEnumerable<ProcessVM>>(_unitOfWork.Repository<Process>().GetList(x => x.TaskId == taskId));
         }
 
         public IEnumerable<UserProcessViewModel> GetWorkFlowTraceList()

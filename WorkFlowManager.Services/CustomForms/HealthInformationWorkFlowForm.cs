@@ -13,6 +13,7 @@ namespace WorkFlowManager.Services.CustomForms
     {
         private readonly ITestWorkFlowProcessService _testWorkFlowProcessService;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
         public HealthInformationWorkFlowForm(IUnitOfWork unitOfWork, ITestWorkFlowProcessService testWorkFlowProcessService)
         {
@@ -47,7 +48,7 @@ namespace WorkFlowManager.Services.CustomForms
             }
             SubBusinessProcessViewModel healthInformationForm = new SubBusinessProcessViewModel { SubBusinessProcessList = healthInformationFormList };
 
-            Mapper.Map(workFlowFormViewModel, healthInformationForm);
+            _mapper.Map(workFlowFormViewModel, healthInformationForm);
 
             return healthInformationForm;
         }

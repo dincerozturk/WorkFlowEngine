@@ -2,11 +2,13 @@
 using Autofac.Integration.Mvc;
 using AutoMapper;
 using Hangfire;
+using Hangfire.Server;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using WorkflowManager.Common.Dto;
 using WorkFlowManager.Common.Constants;
 using WorkFlowManager.Common.DataAccess._Context;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
@@ -167,7 +169,7 @@ namespace WorkFlowManager.Web
             builder.RegisterType<WorkFlowUtil>()
         .As<IWorkFlowUtil>()
         .InstancePerLifetimeScope();
-            
+
             builder.RegisterType<ProcessFactory>()
         .As<IProcessFactory>()
         .InstancePerLifetimeScope();
@@ -176,92 +178,22 @@ namespace WorkFlowManager.Web
             builder.RegisterType<ValidationHelper>()
        .As<IValidationHelper>()
        .InstancePerLifetimeScope();
+
+            #region automapper
+            // use cfg to configure AutoMapper
+            var config = new MapperConfiguration(cfg => cfg.AddProfile<MapperProfile>());
+            var mapper = config.CreateMapper();
+            // or
+            //var mapper = new Mapper(config);
+            builder.RegisterInstance<IMapper>(mapper);
+            #endregion
+
             #endregion
 
             var container = builder.Build();
 
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Process, ProcessVM>()
-                    .ForMember(a => a.IsCondition, opt => opt.MapFrom(c => (c.GetType() == typeof(Condition) || c.GetType() == typeof(DecisionPoint))))
-                    .ForMember(a => a.ConditionId, opt => opt.MapFrom(c => (c as ConditionOption).ConditionId));
-
-
-                cfg.CreateMap<WorkFlowTrace, WorkFlowTrace>()
-                .ForMember(dest => dest.ConditionOption, opt => opt.Ignore())
-                .ForMember(dest => dest.Process, opt => opt.Ignore())
-                .ForMember(dest => dest.Owner, opt => opt.Ignore());
-
-                cfg.CreateMap<WorkFlowFormViewModel, WorkFlowTrace>();
-                cfg.CreateMap<WorkFlowTrace, WorkFlowFormViewModel>();
-
-                cfg.CreateMap<ProcessForm, Process>()
-                    .ConstructUsing(x => new Process())
-                    .Include<ProcessForm, Condition>()
-                    .Include<ProcessForm, SubProcess>()
-                    .Include<ProcessForm, ConditionOption>()
-                    .Include<ProcessForm, DecisionPoint>()
-                    .ForMember(a => a.ProcessMonitoringRoles,
-                        opt => opt.MapFrom(c => c.MonitoringRoleCheckboxes.Where(x => x.IsChecked == true).Select(t => new ProcessMonitoringRole
-                        {
-                            ProcessId = c.Id,
-                            ProjectRole = (int)t.ProjectRole
-                        })));
-
-                cfg.CreateMap<ProcessForm, Condition>()
-                    .ConstructUsing(x => new Condition());
-                cfg.CreateMap<ProcessForm, ConditionOption>()
-                    .ConstructUsing(x => new ConditionOption());
-                cfg.CreateMap<ProcessForm, DecisionPoint>()
-                    .ConstructUsing(x => new DecisionPoint());
-                cfg.CreateMap<ProcessForm, SubProcess>()
-                    .ConstructUsing(x => new SubProcess());
-
-                cfg.CreateMap<DecisionMethodViewModel, DecisionMethod>();
-                cfg.CreateMap<FormViewViewModel, FormView>();
-                cfg.CreateMap<Process, Process>();
-                cfg.CreateMap<Condition, Condition>();
-                cfg.CreateMap<ConditionOption, ConditionOption>();
-                cfg.CreateMap<DecisionPoint, DecisionPoint>();
-
-                cfg.CreateMap<ProcessMonitoringRole, MonitoringRoleCheckbox>()
-                    .ForMember(a => a.IsChecked, opt => opt.MapFrom(c => true));
-
-                cfg.CreateMap<Process, ProcessForm>()
-                    .ForMember(a => a.ConditionId, opt => opt.MapFrom(c => (c as ConditionOption).ConditionId))
-                    .ForMember(a => a.ConditionName, opt => opt.MapFrom(c => (c as ConditionOption).Condition.Name))
-                    .ForMember(a => a.ProcessType, opt => opt.MapFrom(c => ProcessType.Process))
-                    .ForMember(a => a.Value, opt => opt.MapFrom(c => (c as ConditionOption).Value));
-
-                cfg.CreateMap<Condition, ProcessForm>()
-                    .ForMember(a => a.ProcessType, opt => opt.MapFrom(c => ProcessType.Condition));
-
-                cfg.CreateMap<SubProcess, ProcessForm>()
-                    .ForMember(a => a.ProcessType, opt => opt.MapFrom(c => ProcessType.SubProcess));
-
-                cfg.CreateMap<DecisionPoint, ProcessForm>()
-                    .ForMember(a => a.ProcessType, opt => opt.MapFrom(c => ProcessType.DecisionPoint))
-                    .ForMember(a => a.DecisionMethodId, opt => opt.MapFrom(c => c.DecisionMethodId))
-                    .ForMember(a => a.RepetitionFrequenceByHour, opt => opt.MapFrom(c => c.RepetitionFrequenceByHour));
-
-                cfg.CreateMap<ConditionOption, ProcessForm>()
-                    .ForMember(a => a.ProcessType, opt => opt.MapFrom(c => ProcessType.OptionList));
-
-                cfg.CreateMap<TestForm, TestWorkFlowFormViewModel>();
-                cfg.CreateMap<TestWorkFlowFormViewModel, TestForm>();
-
-                cfg.CreateMap<WorkFlowFormViewModel, TestWorkFlowFormViewModel>();
-                cfg.CreateMap<WorkFlowFormViewModel, SubBusinessProcessViewModel>();
-
-            }
-            );
-
-
             GlobalConfiguration.Configuration.UseActivator(new ContainerJobActivator(container));
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
-
-
         }
     }
 }

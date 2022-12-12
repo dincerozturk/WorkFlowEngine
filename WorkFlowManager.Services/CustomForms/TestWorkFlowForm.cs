@@ -15,6 +15,7 @@ namespace WorkFlowManager.Services.CustomForms
         private readonly ITestWorkFlowProcessService _testWorkFlowProcessService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationHelper _validationHelper;
+        private readonly IMapper _mapper;
 
         public TestWorkFlowForm(IUnitOfWork unitOfWork, ITestWorkFlowProcessService testWorkFlowProcessService, IValidationHelper validationHelper)
         {
@@ -44,8 +45,8 @@ namespace WorkFlowManager.Services.CustomForms
                 _unitOfWork.Repository<TestForm>().Add(testForm);
                 _unitOfWork.Complete();
             }
-            TestWorkFlowFormViewModel testFormViewModel = Mapper.Map<TestForm, TestWorkFlowFormViewModel>(testForm);
-            Mapper.Map(workFlowFormViewModel, testFormViewModel);
+            TestWorkFlowFormViewModel testFormViewModel = _mapper.Map<TestForm, TestWorkFlowFormViewModel>(testForm);
+            _mapper.Map(workFlowFormViewModel, testFormViewModel);
 
             return testFormViewModel;
         }

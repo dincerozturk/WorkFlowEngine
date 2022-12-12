@@ -11,9 +11,11 @@ namespace WorkFlowManager.Services.DbServices
     public class FormService : IFormService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public FormService(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public FormService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public void Dispose()
@@ -63,12 +65,12 @@ namespace WorkFlowManager.Services.DbServices
             {
                 formViewDB = new FormView();
 
-                Mapper.Map(formView, formViewDB);
+                _mapper.Map(formView, formViewDB);
                 _unitOfWork.Repository<FormView>().Add(formViewDB);
             }
             else
             {
-                Mapper.Map(formView, formViewDB);
+                _mapper.Map(formView, formViewDB);
             }
 
             _unitOfWork.Complete();

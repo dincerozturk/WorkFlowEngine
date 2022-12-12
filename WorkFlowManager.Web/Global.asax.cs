@@ -1,9 +1,19 @@
-﻿using System;
+﻿using Autofac.Integration.Mvc;
+using Autofac;
+using AutoMapper;
+using System;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using WorkFlowManager.Common.ViewModels;
 using WorkFlowManager.Web.Infra;
+using WorkFlowManager.Common.Tables;
+using System.Linq;
+using WorkFlowManager.Common.Enums;
+using Hangfire;
+using System.Data.Entity.Infrastructure;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace WorkFlowManager.Web
 {
@@ -19,6 +29,7 @@ namespace WorkFlowManager.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyRegistrar.RegisterDependencies();
+
         }
         protected void Application_Error(object sender, EventArgs e)
         {
@@ -26,4 +37,7 @@ namespace WorkFlowManager.Web
         }
 
     }
+
+
+    
 }

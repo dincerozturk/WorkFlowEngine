@@ -23,17 +23,20 @@ namespace WorkFlowManager.Services.DbServices
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWorkFlowDataService _workFlowDataService;
         private readonly IValidationHelper _validationHelper;
+        private readonly IMapper _mapper;
         public Dictionary<string, IWorkFlowForm> workFlowFormList = new Dictionary<string, IWorkFlowForm>();
 
         //public void FormSave(WorkFlowFormViewModel formData);
 
         public WorkFlowProcessService(IUnitOfWork unitOfWork
             , IWorkFlowDataService workFlowDataService
-            , IValidationHelper validationHelper)
+            , IValidationHelper validationHelper,
+IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _workFlowDataService = workFlowDataService;
             _validationHelper = validationHelper;
+            _mapper = mapper;
         }
 
         public int GetOwnerIdFromId(int id)
@@ -93,13 +96,13 @@ namespace WorkFlowManager.Services.DbServices
             WorkFlowTrace workFlowTraceDB = null;
             if (workFlowTrace.Id == 0)
             {
-                workFlowTraceDB = Mapper.Map<WorkFlowTrace, WorkFlowTrace>(workFlowTrace);
+                workFlowTraceDB = _mapper.Map<WorkFlowTrace, WorkFlowTrace>(workFlowTrace);
                 _unitOfWork.Repository<WorkFlowTrace>().Add(workFlowTraceDB);
             }
             else
             {
                 workFlowTraceDB = _unitOfWork.Repository<WorkFlowTrace>().Get(workFlowTrace.Id);
-                Mapper.Map(workFlowTrace, workFlowTraceDB);
+                _mapper.Map(workFlowTrace, workFlowTraceDB);
                 _unitOfWork.Repository<WorkFlowTrace>().Update(workFlowTraceDB);
             }
             _unitOfWork.Complete();
@@ -398,13 +401,13 @@ namespace WorkFlowManager.Services.DbServices
 
             if (form != null)
             {
-                Mapper.Map((TVM)workFlowFormViewModel, form);
+                _mapper.Map((TVM)workFlowFormViewModel, form);
                 _unitOfWork.Repository<TClass>().Update(form);
             }
             else
             {
                 form = (TClass)Activator.CreateInstance(typeof(TClass));
-                Mapper.Map((TVM)workFlowFormViewModel, form);
+                _mapper.Map((TVM)workFlowFormViewModel, form);
                 _unitOfWork.Repository<TClass>().Add(form);
             }
             _unitOfWork.Complete();

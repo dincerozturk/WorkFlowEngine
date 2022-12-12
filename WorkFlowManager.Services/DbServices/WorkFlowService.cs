@@ -16,11 +16,13 @@ namespace WorkFlowManager.Services.DbServices
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWorkFlowUtil _workFlowUtil;
         private readonly IProcessFactory _processFactory;
-        public WorkFlowService(IUnitOfWork unitOfWork, IWorkFlowUtil workFlowUtil, IProcessFactory processFactory)
+        private readonly IMapper _mapper;
+        public WorkFlowService(IUnitOfWork unitOfWork, IWorkFlowUtil workFlowUtil, IProcessFactory processFactory, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _workFlowUtil = workFlowUtil;
             _processFactory = processFactory;
+            _mapper = mapper;
         }
 
         public IEnumerable<WorkFlow> GetWorkFlowList()
@@ -178,7 +180,7 @@ namespace WorkFlowManager.Services.DbServices
 
 
 
-                Mapper.Map(process, processRecorded);
+                _mapper.Map(process, processRecorded);
                 _unitOfWork.Repository<T>().Update(processRecorded);
             }
             _unitOfWork.Complete();
@@ -473,27 +475,27 @@ namespace WorkFlowManager.Services.DbServices
 
             if (formData.ProcessType == ProcessType.Process)
             {
-                var process = Mapper.Map<ProcessForm, Process>(formData);
+                var process = _mapper.Map<ProcessForm, Process>(formData);
                 processId = AddOrUpdate(process);
             }
             else if (formData.ProcessType == ProcessType.Condition)
             {
-                var process = Mapper.Map<ProcessForm, Condition>(formData);
+                var process = _mapper.Map<ProcessForm, Condition>(formData);
                 processId = AddOrUpdate(process);
             }
             else if (formData.ProcessType == ProcessType.OptionList)
             {
-                var process = Mapper.Map<ProcessForm, ConditionOption>(formData);
+                var process = _mapper.Map<ProcessForm, ConditionOption>(formData);
                 processId = AddOrUpdate(process);
             }
             else if (formData.ProcessType == ProcessType.DecisionPoint)
             {
-                var process = Mapper.Map<ProcessForm, DecisionPoint>(formData);
+                var process = _mapper.Map<ProcessForm, DecisionPoint>(formData);
                 processId = AddOrUpdate(process);
             }
             else if (formData.ProcessType == ProcessType.SubProcess)
             {
-                var process = Mapper.Map<ProcessForm, SubProcess>(formData);
+                var process = _mapper.Map<ProcessForm, SubProcess>(formData);
                 processId = AddOrUpdate(process);
             }
 

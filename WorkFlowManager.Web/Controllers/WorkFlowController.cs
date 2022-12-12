@@ -24,12 +24,13 @@ namespace WorkFlowManager.Web.Controllers
         private readonly IDecisionMethodService _decisionMethodService;
         private readonly IGlobal _global;
         private readonly IValidationHelper _validationHelper;
+        private readonly IMapper _mapper;
 
         public WorkFlowController(IUnitOfWork unitOfWork, IWorkFlowService workFlowService
             , IFormService formService
             , IDecisionMethodService decisionMethodService
             , IGlobal global
-            , IValidationHelper validationHelper)
+            , IValidationHelper validationHelper, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _workFlowService = workFlowService;
@@ -37,6 +38,7 @@ namespace WorkFlowManager.Web.Controllers
             _decisionMethodService = decisionMethodService;
             _global = global;
             _validationHelper = validationHelper;
+            _mapper = mapper;
         }
 
         [HttpPost, ValidateAntiForgeryToken, ValidateInput(false)]
@@ -154,7 +156,7 @@ namespace WorkFlowManager.Web.Controllers
             if (formData.Id != 0)
             {
                 Process process = _workFlowService.GetProcess(formData.Id);
-                Mapper.Map(process, formData);
+                _mapper.Map(process, formData);
             }
             var mainProcessList = _workFlowService.GetMainProcessList(formData.TaskId);
 
