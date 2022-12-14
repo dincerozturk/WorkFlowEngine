@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Linq;
 using System.Web.Mvc;
-using WorkflowManager.Common.Dto.Dto;
+//using WorkflowManager.Common.Dto.Dto;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.Enums;
 using WorkFlowManager.Common.Extensions;
@@ -161,16 +161,16 @@ namespace WorkFlowManager.Web.Controllers
             var mainProcessList = _workFlowService.GetMainProcessList(formData.TaskId);
 
 
-            formData.MainProcessList = (mainProcessList != null ? new CustomSelectList(mainProcessList, "Id", "Name") : null);
+            formData.MainProcessList = mainProcessList;// (mainProcessList != null ? new CustomSelectList(mainProcessList, "Id", "Name") : null);
 
             if (formData.ProcessType == ProcessType.DecisionPoint)
             {
-                formData.DecisionMethodList = new CustomSelectList(_workFlowService.GetDecisionMethodList(formData.TaskId), "Id", "MethodName");
-                formData.RepetitionHourList = new CustomSelectList(Enumerable.Range(1, 24));
+                formData.DecisionMethodList = _workFlowService.GetDecisionMethodList(formData.TaskId);// new CustomSelectList(_workFlowService.GetDecisionMethodList(formData.TaskId), "Id", "MethodName");
+                formData.RepetitionHourList = Enumerable.Range(1, 24);// new CustomSelectList(Enumerable.Range(1, 24));
             }
             else if (formData.ProcessType == ProcessType.Process)
             {
-                formData.FormViewList = new CustomSelectList(_workFlowService.GetFormViewList(formData.TaskId), "Id", "FormName");
+                formData.FormViewList = _workFlowService.GetFormViewList(formData.TaskId);// new CustomSelectList(_workFlowService.GetFormViewList(formData.TaskId), "Id", "FormName");
             }
 
 
@@ -227,7 +227,7 @@ namespace WorkFlowManager.Web.Controllers
 
             var nextProcessList = _workFlowService.GetProcessList(taskId).Select(x => new NextProcess
             {
-                MainProcessList = (mainProcess != null ? new CustomSelectList(mainProcess, "Id", "Name") : null),
+                MainProcessList = mainProcess, //(mainProcess != null ? new CustomSelectList(mainProcess, "Id", "Name") : null),
                 Process = x
             });
 

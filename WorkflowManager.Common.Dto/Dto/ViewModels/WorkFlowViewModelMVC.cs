@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 //using System.Web.Mvc;
-using WorkflowManager.Common.Dto.Dto;
+//using WorkflowManager.Common.Dto.Dto;
 using WorkFlowManager.Common.Enums;
 using WorkFlowManager.Common.Tables;
 //using WorkFlowManager.Common.Validation;
@@ -23,9 +23,10 @@ namespace WorkFlowManager.Common.ViewModels
         [Display(Name = "Special Form Type")]
         public int? FormViewId { get; set; }
 
-        public CustomSelectList FormViewList { get; set; }
+        public IEnumerable<FormView> FormViewList { get; set; }
+        //public CustomSelectList FormViewList { get; set; }
         //MonitoringRoleList
-        public IList<MonitoringRoleCheckbox> MonitoringRoleCheckboxes { get; set; }
+        public IEnumerable<MonitoringRoleCheckbox> MonitoringRoleCheckboxes { get; set; }
 
         public string ProcessUniqueCode { get; set; }
         public int TaskId { get; set; }
@@ -33,7 +34,8 @@ namespace WorkFlowManager.Common.ViewModels
 
         [Display(Name = "Next Process")]
         public int? NextProcessId { get; set; }
-        public CustomSelectList MainProcessList { get; set; }
+        public IEnumerable<Process> MainProcessList { get; set; }
+        //public CustomSelectList MainProcessList { get; set; }
 
         [Display(Name = "Next Button Caption")]
         public string NextText { get; set; }
@@ -63,7 +65,8 @@ namespace WorkFlowManager.Common.ViewModels
 
         [Display(Name = "Select Decision Method")]
         public int? DecisionMethodId { get; set; }
-        public CustomSelectList DecisionMethodList { get; set; }
+        public IEnumerable<DecisionMethod> DecisionMethodList { get; set; }
+        //public CustomSelectList DecisionMethodList { get; set; }
 
         [UIHint("_FileUploadTemplate")]
         public FileUpload TemplateFileList { get; set; }
@@ -74,7 +77,8 @@ namespace WorkFlowManager.Common.ViewModels
 
 
 
-        public CustomSelectList RepetitionHourList { get; set; }
+        public IEnumerable<int> RepetitionHourList { get; set; }
+        //public CustomSelectList RepetitionHourList { get; set; }
 
         [Display(Name = "Repetition Frequence By Hour")]
         public int? RepetitionFrequenceByHour { get; set; }
@@ -91,7 +95,8 @@ namespace WorkFlowManager.Common.ViewModels
 
     public class NextProcess
     {
-        public CustomSelectList MainProcessList { get; set; }
+        public IEnumerable<Process> MainProcessList { get; set; }
+        //public CustomSelectList MainProcessList { get; set; }
         public Process Process { get; set; }
     }
 
