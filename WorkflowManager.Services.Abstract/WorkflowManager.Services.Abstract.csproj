@@ -94,6 +94,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WorkflowManager.Common.DAO\WorkflowManager.Common.DAO.csproj">
+      <Project>{b3cdb2c8-7ab7-4092-8e48-3d7ef5937cab}</Project>
+      <Name>WorkflowManager.Common.DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkflowManager.Common.Dto\WorkflowManager.Common.Dto.csproj">
       <Project>{bd0cec4e-2cac-466e-ad3e-7b200acc13a0}</Project>
       <Name>WorkflowManager.Common.Dto</Name>

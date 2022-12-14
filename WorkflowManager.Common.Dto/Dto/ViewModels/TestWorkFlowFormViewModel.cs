@@ -1,7 +1,7 @@
-﻿using FluentValidation;
+﻿//using FluentValidation;
 //using FluentValidation.Attributes;
 using System.ComponentModel.DataAnnotations;
-using WorkFlowManager.Common.Validation;
+//using WorkFlowManager.Common.Validation;
 
 namespace WorkFlowManager.Common.ViewModels
 {

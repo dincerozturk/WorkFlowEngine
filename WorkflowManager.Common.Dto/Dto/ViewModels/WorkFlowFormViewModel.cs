@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WorkFlowManager.Common.Enums;
 using WorkFlowManager.Common.Tables;
-using WorkFlowManager.Common.Validation;
+//using WorkFlowManager.Common.Validation;
 
 namespace WorkFlowManager.Common.ViewModels
 {

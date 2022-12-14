@@ -1,10 +1,11 @@
 ﻿//using FluentValidation.Attributes;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+//using System.Web.Mvc;
+using WorkflowManager.Common.Dto.Dto;
 using WorkFlowManager.Common.Enums;
 using WorkFlowManager.Common.Tables;
-using WorkFlowManager.Common.Validation;
+//using WorkFlowManager.Common.Validation;
 
 namespace WorkFlowManager.Common.ViewModels
 {
@@ -22,7 +23,7 @@ namespace WorkFlowManager.Common.ViewModels
         [Display(Name = "Special Form Type")]
         public int? FormViewId { get; set; }
 
-        public SelectList FormViewList { get; set; }
+        public CustomSelectList FormViewList { get; set; }
         //MonitoringRoleList
         public IList<MonitoringRoleCheckbox> MonitoringRoleCheckboxes { get; set; }
 
@@ -32,7 +33,7 @@ namespace WorkFlowManager.Common.ViewModels
 
         [Display(Name = "Next Process")]
         public int? NextProcessId { get; set; }
-        public SelectList MainProcessList { get; set; }
+        public CustomSelectList MainProcessList { get; set; }
 
         [Display(Name = "Next Button Caption")]
         public string NextText { get; set; }
@@ -62,7 +63,7 @@ namespace WorkFlowManager.Common.ViewModels
 
         [Display(Name = "Select Decision Method")]
         public int? DecisionMethodId { get; set; }
-        public SelectList DecisionMethodList { get; set; }
+        public CustomSelectList DecisionMethodList { get; set; }
 
         [UIHint("_FileUploadTemplate")]
         public FileUpload TemplateFileList { get; set; }
@@ -73,7 +74,7 @@ namespace WorkFlowManager.Common.ViewModels
 
 
 
-        public SelectList RepetitionHourList { get; set; }
+        public CustomSelectList RepetitionHourList { get; set; }
 
         [Display(Name = "Repetition Frequence By Hour")]
         public int? RepetitionFrequenceByHour { get; set; }
@@ -90,7 +91,7 @@ namespace WorkFlowManager.Common.ViewModels
 
     public class NextProcess
     {
-        public SelectList MainProcessList { get; set; }
+        public CustomSelectList MainProcessList { get; set; }
         public Process Process { get; set; }
     }
 
