@@ -23,7 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\WorkflowManager.Core.DAO\WorkflowManager.Core.DAO.csproj" />
+	  <ProjectReference Include="..\WFE.Core.DAO\WFE.Core.DAO.csproj" />
 	</ItemGroup>
 
 </Project>

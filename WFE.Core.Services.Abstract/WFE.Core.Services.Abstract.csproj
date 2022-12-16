@@ -16,9 +16,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\WFE.Core.DAO\WFE.Core.DAO.csproj" />
+		<ProjectReference Include="..\WFE.Core.DTO\WFE.Core.DTO.csproj" />
 		<ProjectReference Include="..\WFE.Core.Migration\WFE.Core.Migration.csproj" />
-		<ProjectReference Include="..\WorkflowManager.Core.DAO\WorkflowManager.Core.DAO.csproj" />
-		<ProjectReference Include="..\WorkflowManager.Core.DTO\WorkflowManager.Core.DTO.csproj" />
 	</ItemGroup>
 
 </Project>
