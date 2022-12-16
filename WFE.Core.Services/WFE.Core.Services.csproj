@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!--<Nullable>enable</Nullable>-->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="11.4.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.5.0" />
+		<PackageReference Include="Hangfire" Version="1.7.32" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="NLog" Version="5.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\WFE.Core.Migration\WFE.Core.Migration.csproj" />
+	  <ProjectReference Include="..\WFE.Core.Services.Abstract\WFE.Core.Services.Abstract.csproj" />
+	  <ProjectReference Include="..\WorkflowManager.Core.DAO\WorkflowManager.Core.DAO.csproj" />
+	  <ProjectReference Include="..\WorkflowManager.Core.DTO\WorkflowManager.Core.DTO.csproj" />
+	</ItemGroup>
+
+</Project>

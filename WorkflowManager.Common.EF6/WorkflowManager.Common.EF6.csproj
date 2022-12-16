@@ -78,6 +78,21 @@
     <Compile Include="DataAccess\_Context\DataContext.cs" />
     <Compile Include="DataAccess\_UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="DataAccess\_UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Mapping\BaseTableMap.cs" />
+    <Compile Include="Mapping\BaseTableTableMap.cs" />
+    <Compile Include="Mapping\BusinessProcessMap.cs" />
+    <Compile Include="Mapping\ConditionMap.cs" />
+    <Compile Include="Mapping\ConditionOptionMap.cs" />
+    <Compile Include="Mapping\DecisionMethodMap.cs" />
+    <Compile Include="Mapping\DecisionPointMap.cs" />
+    <Compile Include="Mapping\DocumentMap.cs" />
+    <Compile Include="Mapping\FormViewMap.cs" />
+    <Compile Include="Mapping\ProcessMap.cs" />
+    <Compile Include="Mapping\ProcessMonitoringRoleMap.cs" />
+    <Compile Include="Mapping\TaskMap.cs" />
+    <Compile Include="Mapping\TestFormMap.cs" />
+    <Compile Include="Mapping\WorkFlowMap.cs" />
+    <Compile Include="Mapping\WorkFlowTraceMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

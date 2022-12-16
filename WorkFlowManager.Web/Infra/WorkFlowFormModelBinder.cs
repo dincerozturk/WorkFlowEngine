@@ -14,7 +14,7 @@ namespace WorkFlowManager.Web.Infra
             var asmClass = (string)typeValue.ConvertTo(typeof(string));
 
 
-            var serviceAsmPath = "WorkFlowManager.Common";
+            var serviceAsmPath = "WorkFlowManager.Common.Dto";
 
             Assembly asm = Assembly.Load(serviceAsmPath);
             Type type = asm.GetType(asmClass);

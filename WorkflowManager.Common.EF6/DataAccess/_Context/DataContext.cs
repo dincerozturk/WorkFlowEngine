@@ -12,9 +12,9 @@ using WorkFlowManager.Common.Tables;
 
 namespace WorkFlowManager.Common.DataAccess._Context
 {
-    public class DataContext : IdentityDbContext
+    public class DataContext : DbContext //IdentityDbContext
     {
-        public DataContext() : base("WorkFlowManagerDB")
+        public DataContext() : base("WorkFlowManagerDB")    
         {
             //Database.CommandTimeout = 180;
             //Lazy loading
