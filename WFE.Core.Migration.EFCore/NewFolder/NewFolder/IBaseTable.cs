@@ -1,8 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WorkFlowManager.Common.Tables
+namespace WFE.Core.Migration.EFCore.Models
 {
     public interface IBaseTable
     {
@@ -16,7 +18,7 @@ namespace WorkFlowManager.Common.Tables
     }
 
 
-    public abstract class BaseTable : IBaseTable
+    public abstract class ABaseTable : IBaseTable
     {
         public int Id { get; set; }
         public DateTime CreatedTime { get; set; }
@@ -26,15 +28,4 @@ namespace WorkFlowManager.Common.Tables
         public virtual ICollection<Document> Documents { get; set; }
         public virtual ICollection<WorkFlowTrace> WorkFlowTraces { get; set; }
     }
-
-    //public class BaseTable : IBaseTable
-    //{
-    //    public int Id { get; set; }
-    //    public DateTime CreatedTime { get; set; }
-    //    public DateTime? UpdatedTime { get; set; }
-    //    public DateTime? LastlyModifiedTime { get { return UpdatedTime ?? CreatedTime; } }
-
-    //    public virtual ICollection<Document> Documents { get; set; }
-    //    public virtual ICollection<WorkFlowTrace> WorkFlowTraces { get; set; }
-    //}
 }

@@ -5,7 +5,7 @@ using WorkFlowManager.Common.Extensions;
 
 namespace WorkFlowManager.Common.Tables
 {
-    public class Process : ABaseTable
+    public class Process : BaseTable
     {
         public int AssignedRole { get; set; }
         public int? FormViewId { get; set; }

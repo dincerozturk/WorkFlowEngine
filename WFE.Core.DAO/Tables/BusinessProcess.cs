@@ -1,6 +1,6 @@
 ﻿namespace WorkFlowManager.Common.Tables
 {
-    public class BusinessProcess : ABaseTable
+    public class BusinessProcess : BaseTable
     {
         public int? OwnerId { get; set; }
         public virtual BusinessProcess Owner { get; set; }

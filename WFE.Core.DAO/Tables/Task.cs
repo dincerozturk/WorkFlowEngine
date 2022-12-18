@@ -2,7 +2,7 @@
 
 namespace WorkFlowManager.Common.Tables
 {
-    public class Task : ABaseTable
+    public class Task : BaseTable
     {
         public Task()
         {

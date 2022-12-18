@@ -17,10 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager.Services.Ab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager.Common.DAO", "WorkflowManager.Common.DAO\WorkflowManager.Common.DAO.csproj", "{B3CDB2C8-7AB7-4092-8E48-3D7EF5937CAB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowManager.Core.DAO", "WorkflowManager.Core.DAO\WorkflowManager.Core.DAO.csproj", "{062F22D9-486F-40ED-BDBB-498BD84415C4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowManager.Core.DTO", "WorkflowManager.Core.DTO\WorkflowManager.Core.DTO.csproj", "{1409AF94-A301-4818-9559-00A6AC1BA993}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WFE.Core.Migration", "WFE.Core.Migration\WFE.Core.Migration.csproj", "{F03659C5-7742-4A2B-89F5-A9063F6FF806}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WFE.Core.Services.Abstract", "WFE.Core.Services.Abstract\WFE.Core.Services.Abstract.csproj", "{9A117659-195D-4ECF-9341-CD91392E0D8C}"
@@ -29,9 +25,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WFE.Core.Services", "WFE.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WFE.Core.Web", "WFE.Core.Web\WFE.Core.Web.csproj", "{04B80AD2-0B06-41D4-9E8C-922EF9F79888}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFE.Core.DAO", "WFE.Core.DAO\WFE.Core.DAO.csproj", "{9B91A4CB-AF76-45A8-AE0C-23245D65017B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WFE.Core.DAO", "WFE.Core.DAO\WFE.Core.DAO.csproj", "{9B91A4CB-AF76-45A8-AE0C-23245D65017B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFE.Core.DTO", "WFE.Core.DTO\WFE.Core.DTO.csproj", "{2A2BB8B8-CDDC-485A-A3E1-996FC5D8E480}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WFE.Core.DTO", "WFE.Core.DTO\WFE.Core.DTO.csproj", "{2A2BB8B8-CDDC-485A-A3E1-996FC5D8E480}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFE.Core.Migration.EFCore", "WFE.Core.Migration.EFCore\WFE.Core.Migration.EFCore.csproj", "{7B4305C6-E818-44D2-A758-6E4591D09519}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orj", "Orj", "{8AE7B7F8-E052-46E3-8F9C-62458A76B37E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net7", "Net7", "{BF526604-3FCC-4DA9-AE4C-7B154D7C6C18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetMvc", "NetMvc", "{99138BCB-3EE2-459B-93E0-59C36AC393B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,14 +71,6 @@ Global
 		{B3CDB2C8-7AB7-4092-8E48-3D7EF5937CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3CDB2C8-7AB7-4092-8E48-3D7EF5937CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3CDB2C8-7AB7-4092-8E48-3D7EF5937CAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{062F22D9-486F-40ED-BDBB-498BD84415C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{062F22D9-486F-40ED-BDBB-498BD84415C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{062F22D9-486F-40ED-BDBB-498BD84415C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{062F22D9-486F-40ED-BDBB-498BD84415C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1409AF94-A301-4818-9559-00A6AC1BA993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1409AF94-A301-4818-9559-00A6AC1BA993}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1409AF94-A301-4818-9559-00A6AC1BA993}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1409AF94-A301-4818-9559-00A6AC1BA993}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F03659C5-7742-4A2B-89F5-A9063F6FF806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F03659C5-7742-4A2B-89F5-A9063F6FF806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F03659C5-7742-4A2B-89F5-A9063F6FF806}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -99,6 +95,10 @@ Global
 		{2A2BB8B8-CDDC-485A-A3E1-996FC5D8E480}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A2BB8B8-CDDC-485A-A3E1-996FC5D8E480}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A2BB8B8-CDDC-485A-A3E1-996FC5D8E480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B4305C6-E818-44D2-A758-6E4591D09519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B4305C6-E818-44D2-A758-6E4591D09519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B4305C6-E818-44D2-A758-6E4591D09519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B4305C6-E818-44D2-A758-6E4591D09519}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

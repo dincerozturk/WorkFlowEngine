@@ -2,7 +2,7 @@
 
 namespace WorkFlowManager.Common.Tables
 {
-    public class FormView : ABaseTable
+    public class FormView : BaseTable
     {
         public int TaskId { get; set; }
         public virtual Task Task { get; set; }
