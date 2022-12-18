@@ -1,0 +1,99 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/bundles/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/jquery-{version}.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundles/jquery.validate.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/jquery.validate*"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundles/modernizr.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/modernizr-*"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundles/bootstrap.min.js",
+    "inputFiles": [
+      //"wwwroot/Scripts/bootstrap.js",
+      //"wwwroot/Scripts/highlight.js",
+      //"wwwroot/Scripts/main.js",
+      //"wwwroot/Scripts/respond.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundles/workflow.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/mermaid.js",
+      "wwwroot/Scripts/bootstrap-switch.min.js",
+      "wwwroot/Content/plugins/iCheck/icheck.min.js",
+      "wwwroot/Scripts/workflow.js",
+      "wwwroot/Scripts/kendo.all.min.js",
+      "wwwroot/Scripts/PostEditor.js",
+      "wwwroot/Scripts/kendo.aspnetmvc.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundles/app.css",
+    "inputFiles": [
+      //"wwwroot/Content/bootstrap.css"
+      //"wwwroot/Content/_all-skins.css",
+      //"wwwroot/Content/kendo.common.min.css",
+      //"wwwroot/Content/kendo.default.min.css",
+      //"wwwroot/Content/AdminLTE.min.css",
+      //"wwwroot/Content/progress-wizard.min.css",
+      //"wwwroot/Content/mermaid.forest.css",
+      //"wwwroot/Content/bootstrap-switch.min.css",
+      //"wwwroot/Content/plugins/iCheck/all.css",
+      //"wwwroot/Content/fileUploader.css",
+      //"wwwroot/Content/workflow.css",
+      //"wwwroot/Content/site.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
