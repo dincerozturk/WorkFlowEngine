@@ -45,6 +45,10 @@ namespace WFE.Core.Web
             //services.AddDbContext<WorkFlowManager.Web.Models.ApplicationDbContext>(options => options.UseSqlServer(Configuration["ConnectionString"]));
 
             builder.Services.AddDependencies();
+            //builder.Services.AddBundles(options =>
+            //{
+            //    options.AppendVersion = true;
+            //});
 
             var app = builder.Build();
 
@@ -95,6 +99,15 @@ namespace WFE.Core.Web
 
             #region automapper
 
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MapperProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             //// use cfg to configure AutoMapper
@@ -104,13 +117,14 @@ namespace WFE.Core.Web
             ////var mapper = new Mapper(config);
             //services.AddSingleton<IMapper>(mapper);
 
-            //var mapperConfig = new MapperConfiguration(mc => {
+            //var mapperConfig = new MapperConfiguration(mc =>
+            //{
             //    mc.AddProfile(new MapperProfile());
             //});
             //IMapper mapper = mapperConfig.CreateMapper();
             //services.AddSingleton(mapper);
 
-            
+
             #endregion
         }
     }
