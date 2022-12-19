@@ -72,12 +72,12 @@ namespace WorkFlowManager.Web.Controllers
 
         public ProcessForm ProcessFormLoad(ProcessForm formData)
         {
-            var process = _unitOfWork.Repository<Process>().Get(x => x.Id == formData.Id, x => x.Documents);
+            var process = _unitOfWork.Repository<Process>().Get(x => x.Id == formData.Id, x => x.DocumentList);
 
             if (process != null)
             {
-                formData.TemplateFileList = new FileUpload(process.Documents, FileType.ProcessTemplateFile, process.Id);
-                formData.AnalysisFileList = new FileUpload(process.Documents, FileType.AnalysisFile, process.Id);
+                formData.TemplateFileList = new FileUpload(process.DocumentList, FileType.ProcessTemplateFile, process.Id);
+                formData.AnalysisFileList = new FileUpload(process.DocumentList, FileType.AnalysisFile, process.Id);
                 formData.ProcessUniqueCode = process.ProcessUniqueCode;
             }
 

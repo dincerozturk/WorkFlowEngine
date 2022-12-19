@@ -10,7 +10,7 @@ namespace WorkFlowManager.Common.Mapping
 
             //one-to-many
             HasRequired(s => s.WorkFlow) // Gorev bir iş akışına bağlı olmalı
-                .WithMany(s => s.Tasks) // İş akışının birden fazla görevi olabilir
+                .WithMany(s => s.TaskList) // İş akışının birden fazla görevi olabilir
                 .WillCascadeOnDelete(false);
 
             Property(t => t.Name)
@@ -21,7 +21,7 @@ namespace WorkFlowManager.Common.Mapping
                 .HasMaxLength(100);
 
             HasOptional(s => s.TopTask)
-                .WithMany(s => s.Tasks)
+                .WithMany(s => s.SubTaskList)
                 .HasForeignKey(s => s.TopTaskId)
                 .WillCascadeOnDelete(false);
 

@@ -2,6 +2,7 @@ using Autofac;
 using Autofac.Core;
 using AutoMapper;
 using Hangfire;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 //using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Data.Entity;
@@ -26,6 +27,7 @@ namespace WFE.Core.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddServerSideBlazor();
 
 
             var connectingstring = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -41,14 +43,11 @@ namespace WFE.Core.Web
             //}, ServiceLifetime.Scoped
             //);
             //builder.Services.AddScoped<DbContext, DataContext>();
-            //builder.Services.AddScoped<DbContext, DataContext>();
             //services.AddDbContext<WorkFlowManager.Web.Models.ApplicationDbContext>(options => options.UseSqlServer(Configuration["ConnectionString"]));
 
             builder.Services.AddDependencies();
-            //builder.Services.AddBundles(options =>
-            //{
-            //    options.AppendVersion = true;
-            //});
+            builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 
@@ -70,7 +69,7 @@ namespace WFE.Core.Web
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
+            app.MapBlazorHub();
             app.Run();
         }
     }

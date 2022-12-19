@@ -12,7 +12,7 @@ namespace WorkFlowManager.Common.Mapping
 
 
             HasRequired(s => s.Task)
-                .WithMany(s => s.DecisionMethods)
+                .WithMany(s => s.DecisionMethodList)
                 .WillCascadeOnDelete(false);
 
             Property(t => t.MethodDescription)

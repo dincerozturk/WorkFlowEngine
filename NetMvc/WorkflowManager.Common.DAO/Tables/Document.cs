@@ -2,10 +2,10 @@
 
 namespace WorkFlowManager.Common.Tables
 {
-    public class Document : ABaseTable
+    public class Document : BaseTable
     {
         public int OwnerId { get; set; }
-        public virtual ABaseTable Owner { get; set; }
+        public virtual BaseTable Owner { get; set; }
 
         public virtual FileType FileType { get; set; }
         public string FileName { get; set; }

@@ -11,19 +11,19 @@ namespace WorkFlowManager.Common.Tables
         DateTime? UpdatedTime { get; set; }
         DateTime? LastlyModifiedTime { get; }
 
-        ICollection<Document> Documents { get; set; }
-        ICollection<WorkFlowTrace> WorkFlowTraces { get; set; }
+        ICollection<Document> DocumentList { get; set; }
+        ICollection<WorkFlowTrace> WorkFlowTraceList { get; set; }
     }
 
 
-    public abstract class ABaseTable : IBaseTable
+    public abstract class BaseTable : IBaseTable
     {
         public int Id { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime? UpdatedTime { get; set; }
         public DateTime? LastlyModifiedTime { get { return UpdatedTime ?? CreatedTime; } }
 
-        public virtual ICollection<Document> Documents { get; set; }
-        public virtual ICollection<WorkFlowTrace> WorkFlowTraces { get; set; }
+        public virtual ICollection<Document> DocumentList { get; set; }
+        public virtual ICollection<WorkFlowTrace> WorkFlowTraceList { get; set; }
     }
 }

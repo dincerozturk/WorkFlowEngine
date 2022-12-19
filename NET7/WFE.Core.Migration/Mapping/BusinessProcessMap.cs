@@ -20,7 +20,7 @@ namespace WorkFlowManager.Common.Mapping
 
 
             HasOptional(s => s.OwnerSubProcessTrace)
-                .WithMany(s => s.BusinessProcesses)
+                .WithMany(s => s.SubProcessList)
                 .WillCascadeOnDelete(false);
         }
     }

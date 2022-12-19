@@ -36,7 +36,7 @@ namespace WorkFlowManager.Common.Mapping
                         new IndexAttribute(name: "IX_GorevIslemKodu", order: 1) { IsUnique = true }));
 
             HasRequired(s => s.Task)
-                .WithMany(s => s.Processes)
+                .WithMany(s => s.ProcessList)
                 .WillCascadeOnDelete(false);
 
         }

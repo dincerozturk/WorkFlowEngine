@@ -9,7 +9,7 @@ namespace WorkFlowManager.Common.Mapping
             ToTable(tableName: "WorkFlowTraceTbl");
 
             HasRequired(s => s.Owner)
-                .WithMany(s => s.WorkFlowTraces)
+                .WithMany(s => s.WorkFlowTraceList)
                 .WillCascadeOnDelete(false);
 
             Property(s => s.Description)

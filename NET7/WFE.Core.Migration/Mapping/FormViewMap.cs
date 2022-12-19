@@ -11,7 +11,7 @@ namespace WorkFlowManager.Common.Mapping
             ToTable(tableName: "FormViewTbl");
 
             HasRequired(s => s.Task)
-                .WithMany(s => s.FormViews)
+                .WithMany(s => s.FormViewList)
                 .WillCascadeOnDelete(false);
 
 

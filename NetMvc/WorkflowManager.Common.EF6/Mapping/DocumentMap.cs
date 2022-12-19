@@ -12,7 +12,7 @@ namespace WorkFlowManager.Common.Mapping
 
             //one-to-many
             HasRequired(s => s.Owner) // Belge nin belge islemi
-                .WithMany(s => s.Documents) // Belge işlemin birden çok belgesi olabilir
+                .WithMany(s => s.DocumentList) // Belge işlemin birden çok belgesi olabilir
                 .WillCascadeOnDelete(false);
 
 

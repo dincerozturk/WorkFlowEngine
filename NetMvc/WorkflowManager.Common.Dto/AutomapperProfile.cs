@@ -33,7 +33,7 @@ namespace WorkflowManager.Common.Dto
                 .Include<ProcessForm, SubProcess>()
                 .Include<ProcessForm, ConditionOption>()
                 .Include<ProcessForm, DecisionPoint>()
-                .ForMember(a => a.ProcessMonitoringRoles,
+                .ForMember(a => a.MonitoringRoleList,
                     opt => opt.MapFrom(c => c.MonitoringRoleCheckboxes.Where(x => x.IsChecked == true).Select(t => new ProcessMonitoringRole
                     {
                         ProcessId = c.Id,

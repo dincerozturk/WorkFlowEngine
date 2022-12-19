@@ -1,6 +1,6 @@
 ﻿namespace WorkFlowManager.Common.Tables
 {
-    public class DecisionMethod : ABaseTable
+    public class DecisionMethod : BaseTable
     {
         public int TaskId { get; set; }
         public virtual Task Task { get; set; }

@@ -4,4 +4,12 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<!--<Nullable>enable</Nullable>-->
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Tables\Orj\**" />
+	  <EmbeddedResource Remove="Tables\Orj\**" />
+	  <None Remove="Tables\Orj\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Tables\" />
+	</ItemGroup>
 </Project>

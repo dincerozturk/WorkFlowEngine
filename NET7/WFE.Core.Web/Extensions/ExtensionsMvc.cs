@@ -32,6 +32,7 @@ namespace WorkFlowManager.Common.Extensions
                         .Select(x => HttpUtility.HtmlEncode(x))
                 );
                 var htmlString = new HtmlString(result);
+                return htmlString;
                 //return MvcHtmlString.Create(result);
             }
             return null;

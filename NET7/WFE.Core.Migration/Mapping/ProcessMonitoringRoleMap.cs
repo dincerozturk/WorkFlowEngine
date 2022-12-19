@@ -12,7 +12,7 @@ namespace WorkFlowManager.Common.Mapping
             ToTable(tableName: "ProcessMonitoringRoleTbl");
 
             HasRequired(s => s.Process)
-                .WithMany(s => s.ProcessMonitoringRoles)
+                .WithMany(s => s.MonitoringRoleList)
                 .WillCascadeOnDelete(false);
         }
     }

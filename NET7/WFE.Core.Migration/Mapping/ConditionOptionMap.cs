@@ -9,7 +9,7 @@ namespace WorkFlowManager.Common.Mapping
             ToTable(tableName: "ConditionOptionTbl");
 
             HasRequired(s => s.Condition)
-                .WithMany(s => s.ConditionOptions)
+                .WithMany(s => s.OptionList)
                 .WillCascadeOnDelete(false);
 
             Property(t => t.Value)
