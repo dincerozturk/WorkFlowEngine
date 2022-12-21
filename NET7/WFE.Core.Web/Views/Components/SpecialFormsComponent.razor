@@ -1,0 +1,39 @@
+﻿@using WorkFlowManager.Services.DbServices;
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <div class="col-lg-12">
+                    <h3 class="box-title">Form Information</h3>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr><td>Name</td><td>View Name asdasdsadas</td></tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <text>
+                        <tr><td>@item.FormName</td><td>@item.ViewName</td></tr>
+                        </text>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Inject]
+    public IFormService formService { get; set; }
+
+    public IEnumerable<WorkFlowManager.Common.ViewModels.FormViewViewModel> Model { get; set; }
+    [Parameter]
+    public int TaskId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = formService.Read(TaskId);
+    }
+}

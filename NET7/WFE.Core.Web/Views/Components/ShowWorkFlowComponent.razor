@@ -1,0 +1,19 @@
+﻿@using WorkFlowManager.Common.ViewModels;
+@using WorkFlowManager.Services.DbServices;
+
+@((MarkupString)Model)
+
+@code {
+    [Inject]
+    public IWorkFlowService _workFlowService { get; set; }
+
+    public string Model { get; set; }
+
+    [Parameter]
+    public int taskId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = _workFlowService.GetWorkFlowDiagram(taskId);
+    }
+}

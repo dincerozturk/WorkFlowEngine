@@ -1,0 +1,46 @@
+﻿@using WorkFlowManager.Common.ViewModels;
+@using WorkFlowManager.Services.DbServices;
+
+
+@code {
+    [Inject]
+    public IWorkFlowService _workFlowService { get; set; }
+
+    public WorkFlowManager.Common.ViewModels.WorkFlowViewModel Model { get; set; }
+    [Parameter]
+    public int taskId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var taskList = _workFlowService.GetTaskList();
+
+        var actkiveTask = taskList.SingleOrDefault(x => x.Id == taskId);
+        var mainProcess = _workFlowService.GetMainProcessList(taskId);
+
+        var nextProcessList = _workFlowService.GetProcessList(taskId).Select(x => new NextProcess
+            {
+                MainProcessList = mainProcess, //(mainProcess != null ? new CustomSelectList(mainProcess, "Id", "Name") : null),
+                Process = x
+            });
+
+        WorkFlowViewModel workFlowViewModel = null;
+
+        if (nextProcessList.Count() > 0)
+        {
+            workFlowViewModel = new WorkFlowViewModel
+                {
+                    ActiveTaskId = taskId,
+                    FirstProcessId = (actkiveTask.StartingProcessId != null ? (int)actkiveTask.StartingProcessId : 0),
+                    NextProcessList = nextProcessList
+                };
+        }
+        else
+        {
+            workFlowViewModel = new WorkFlowViewModel
+                {
+                    ActiveTaskId = taskId,
+                    NextProcessList = null
+                };
+        }
+    }
+}

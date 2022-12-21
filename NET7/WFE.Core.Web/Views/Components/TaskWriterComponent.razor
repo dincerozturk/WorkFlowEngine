@@ -1,0 +1,150 @@
+﻿@using WorkFlowManager.Common.Tables
+
+
+
+@code {
+
+    public int taskId { get; set; }
+    public List<int> elementOfTree { get; set; }
+    public List<WorkFlowManager.Common.ViewModels.NextProcess> listOfConditionOption { get; set; }
+
+    protected override async System.Threading.Tasks.Task OnInitializedAsync()
+    {
+        if (elementOfTree.Contains(taskId) || taskId == 0)
+        {
+            return;
+        }
+
+        List<ConditionOption> ConditionOptionler = null;
+        var task = Model.NextProcessList.SingleOrDefault(x => x.Process.Id == taskId);
+
+        elementOfTree.Add(taskId);
+
+        var ikon = "";
+        string linkHref = "#";
+        bool silinebilir = true;
+        if (task.Process is Condition || task.Process is ConditionOption)
+        {
+            linkHref = string.Format("#panelTree_{0}", task.Process.ProcessUniqueCode);
+            ikon = "fa-arrows";
+            if (task.Process is Condition)
+            {
+                ConditionOptionler = listOfConditionOption.Where(x => (x.Process as ConditionOption).ConditionId == task.Process.Id).Select(x => (x.Process as ConditionOption)).ToList();
+            }
+            else //Koşul seçenek ise koşulu karar noktası mı? Karar noktası ise maddelerin silinmesine izin verilmeyecek
+            {
+                var secenekCondition = Model.NextProcessList.Single(x => x.Process.Id == (task.Process as ConditionOption).ConditionId);
+                if (secenekCondition.Process is DecisionPoint)
+                {
+                    silinebilir = false;
+                }
+            }
+        }
+        else
+        {
+            ikon = "fa-arrow-right";
+        }
+        var islemGosterim = "";
+
+
+        if (!(task.Process is Condition))
+        {
+            islemGosterim = string.Format("{0} {1} <i class=\"fa fa-arrow-right\"></i>", "<i class=\"fa " + @ikon + " \"></i>", task.Process.Name);
+        }
+        else
+        {
+            islemGosterim = string.Format("{0} {1}", "<i class=\"fa " + @ikon + " \"></i>", task.Process.Name);
+        }
+        var panelId = string.Format("panelTree_{0}", task.Process.ProcessUniqueCode);
+        var panelTreeLinkId = string.Format("panelTreeLink_{0}", task.Process.ProcessUniqueCode);
+
+
+        <div class='panel panel-default'>
+            <div class='panel-heading'>
+                <h4 class='panel-title'>
+
+                    <a data-toggle='collapse' id="@panelTreeLinkId" href='@linkHref'>@Html.Raw(islemGosterim)</a>
+
+
+                    @if (!(task.Process is Condition))
+                    {
+                        @Html.EditorFor(x => task)
+                    }
+                    @if (
+            (
+            silinebilir
+            &&
+            !(task.Process.GetType() == typeof(Condition))
+            ||
+            (task.Process.GetType() == typeof(Condition) && ConditionOptionler != null && ConditionOptionler.Count() == 0)
+            )
+            )
+                    {
+                        <a href="@Url.Action("Delete", new { processId = task.Process.Id, taskId = task.Process.TaskId })" data-post="Are you sure you want to delete?" class="pull-right"><i class="glyphicon glyphicon-remove" style="color:red" title="Delete"></i></a>
+                    }
+                    else
+                    {
+                        <i class="glyphicon glyphicon-remove pull-right" style="color:lightgray"></i>
+                    }
+                    <a href="@Url.Action("Edit", new { processId = task.Process.Id })" class="pull-right"><i class="fa fa-edit" title="Edit"></i></a>
+                </h4>
+            </div>
+
+
+            @if (task.Process is Condition || task.Process is ConditionOption)
+            {
+
+                <text>
+                    @Html.Raw(string.Format(
+        @"<div class='panel-collapse collapse' id='{0}'>
+        <div class='panel-body'>", @panelId))
+                </text>
+                if (task.Process is Condition)
+                {
+                    if (!(task.Process is DecisionPoint))
+                    {
+                        <div class="btn-group">
+                            <a href="@Url.Action("New", new { taskId = Model.ActiveTaskId, processType = ProcessType.OptionList, ConditionId = task.Process.Id })" class="btn btn-default btn-sm">
+                                <i class="glyphicon glyphicon-plus"></i> New Option
+                            </a>
+                        </div>
+                    }
+                    foreach (var option in Model.NextProcessList)
+                    {
+                        if (option.Process is ConditionOption)
+                        {
+                            if (((ConditionOption)option.Process).ConditionId == task.Process.Id)
+                            {
+                                @TaskWriter(option.Process.Id, elementOfTree, listOfConditionOption)
+                                ;
+                            }
+                        }
+                    }
+                }
+                else if (task.Process is ConditionOption)
+                {
+                    if (task.Process.NextProcessId != null)
+                    {
+                        @TaskWriter((int)task.Process.NextProcessId, elementOfTree, listOfConditionOption)
+                        ;
+                    }
+                }
+
+                <text>
+                    @Html.Raw("</div></div>")
+                </text>
+            }
+
+        </div>
+
+
+
+
+        if (task.Process.NextProcessId != null)
+        {
+            @TaskWriter((int)task.Process.NextProcessId, elementOfTree, listOfConditionOption)
+            ;
+        }
+    }
+}
+}
