@@ -1,5 +1,4 @@
-﻿
-@*@using System.Web.Optimization*@
+﻿@*@using System.Web.Optimization*@
 @using WorkFlowManager.Common.Tables
 @using WorkFlowManager.Common.Enums
 
@@ -52,26 +51,27 @@
                     </ul>
                     <div class="tab-content no-padding">
                         <!-- Morris chart - Sales -->
-@*                        <div class="chart tab-pane active" id="workFlow">
+                        <div class="chart tab-pane active" id="workFlow">
                             <div id="workFlowContainer" class="box-body">
-                                @{ Html.RenderAction("WorkFlow", "WorkFlow", new { taskId = Model.ActiveTaskId }); }
+                                <div id="workFlowContainer-view" data-url="@Url.Action(action: "WorkFlow", controller: "WorkFlow", new { taskId = Model.ActiveTaskId })"></div>
+                                <component type="typeof(WorkFlowWorkbenchComponent)" render-mode="ServerPrerendered" param-taskId="Model.ActiveTaskId" />
                             </div>
                         </div>
                         <div class="chart tab-pane" id="specialForms">
                             <div id="specialFormsContainer" class="box-body">
-                                @{ Html.RenderAction("SpecialForm", "WorkFlow", new { taskId = Model.ActiveTaskId }); }
+                                <component type="typeof(SpecialFormsComponent)" render-mode="ServerPrerendered" param-TaskId="Model.ActiveTaskId" />
                             </div>
                         </div>
                         <div class="chart tab-pane" id="decisionMethods">
                             <div id="decisionMethodsContainer" class="box-body">
-                                @{ Html.RenderAction("DecisionMethod", "WorkFlow", new { taskId = Model.ActiveTaskId }); }
+                                <component type="typeof(DecisionMethodComponent)" render-mode="ServerPrerendered" param-TaskId="Model.ActiveTaskId" />
                             </div>
                         </div>
                         <div class="chart tab-pane" id="workFlowSummary">
                             <div id="workFlowSummaryContainer" class="box-body">
-                                @{ Html.RenderAction("WorkFlowSummary", "WorkFlow", new { taskId = Model.ActiveTaskId }); }
+                                <component type="typeof(WorkFlowSummaryComponent)" render-mode="ServerPrerendered" param-TaskId="Model.ActiveTaskId" />
                             </div>
-                        </div>*@
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,5 +88,17 @@
 
 <script>
     var validationMessageTmpl = kendo.template($("#message").html());
+</script>
+
+<script>
+    $(document).ready(function () {
+        (function () {
+            var url = $("#workFlowContainer-view").data("url");
+            $("#workFlowContainer-view").load(url);
+
+            url = $("#specialFormsContainer-view").data("url");
+            $("#specialFormsContainer-view").load(url);
+        })();
+    });
 </script>
 

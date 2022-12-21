@@ -314,7 +314,7 @@ namespace WorkFlowManager.Web.Controllers
         }
 
 
-        public ActionResult ShowWorkFlowFullScreen(int taskId)
+        public IActionResult ShowWorkFlowFullScreen(int taskId)
         {
             string gorevAkis = _workFlowService.GetWorkFlowDiagram(taskId);
             return PartialView("_MShowWorkFlow", new WorkFlowView { Flag = false, WorkFlowText = gorevAkis });

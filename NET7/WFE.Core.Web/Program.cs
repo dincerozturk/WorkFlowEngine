@@ -3,6 +3,7 @@ using Autofac.Core;
 using AutoMapper;
 using Hangfire;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 //using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Data.Entity;
@@ -27,12 +28,14 @@ namespace WFE.Core.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            // Add services to the container.
+            builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
 
 
-            var connectingstring = builder.Configuration.GetConnectionString("DefaultConnection");
+            //var connectingstring = builder.Configuration.GetConnectionString("DefaultConnection");
 
-            string migrationassembly = "WorkFlowManager.Common.DataAccess._Context";
+            //string migrationassembly = "WorkFlowManager.Common.DataAccess._Context";
             //builder.Services.AddDbContext<DbContext>(options =>
             //{
             //    //options = optionBuilder;

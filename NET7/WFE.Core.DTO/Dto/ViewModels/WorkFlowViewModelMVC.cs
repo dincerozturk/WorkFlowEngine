@@ -107,4 +107,12 @@ namespace WorkFlowManager.Common.ViewModels
         public IEnumerable<NextProcess> NextProcessList { get; set; }
     }
 
+    public class TaskWriterModel
+    {
+        public int? taskId { get; set; }
+        public List<int> elementOfTree { get; set; }
+        public List<WorkFlowManager.Common.ViewModels.NextProcess> listOfConditionOption { get; set; }
+        public WorkFlowManager.Common.ViewModels.WorkFlowViewModel Model { get; set; }
+    }
+
 }

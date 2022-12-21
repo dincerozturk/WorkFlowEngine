@@ -7,23 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\WorkFlowProcess\**" />
-    <Compile Remove="Views\WorkFlow\**" />
-    <Content Remove="Views\WorkFlowProcess\**" />
-    <Content Remove="Views\WorkFlow\**" />
-    <EmbeddedResource Remove="Views\WorkFlowProcess\**" />
-    <EmbeddedResource Remove="Views\WorkFlow\**" />
-    <None Remove="Views\WorkFlowProcess\**" />
-    <None Remove="Views\WorkFlow\**" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Content Remove="Views\Components\TaskWriterComponent.razor" />
+    <Content Remove="Views\WorkFlow\_TaskWriter.cshtml" />
     <Content Remove="wwwroot\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Remove="wwwroot\Scripts\jquery-3.6.1.intellisense.js" />
     <Content Remove="wwwroot\Scripts\jquery.validate-vsdoc.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\WorkFlowProcess\HealthInformationWorkFlowForm.cshtml" />
+    <None Include="Views\WorkFlowProcess\TestWorkFlowForm.cshtml" />
+    <None Include="Views\WorkFlow\EditorTemplates\NextProcess.cshtml" />
+    <None Include="Views\WorkFlow\Index.cshtml" />
+    <None Include="Views\WorkFlow\ProcessForm.cshtml" />
+    <None Include="Views\WorkFlow\_TaskWriter.cshtml" />
+    <None Include="Views\WorkFlow\_DecisionMethod.cshtml" />
+    <None Include="Views\WorkFlow\_SpecialForms.cshtml" />
+    <None Include="Views\WorkFlow\_WorkFlowSummary.cshtml" />
     <None Include="wwwroot\Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="wwwroot\Scripts\jquery-3.6.1.intellisense.js" />
     <None Include="wwwroot\Scripts\jquery.validate-vsdoc.js" />
@@ -34,6 +34,7 @@
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
 		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
 		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.32" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
