@@ -113,7 +113,7 @@
                     {
                         if (((ConditionOption)option.Process).ConditionId == task.Process.Id)
                         {
-                            @Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
+                            @await Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
     taskId = option.Process.Id,
     elementOfTree = elementOfTree,
     listOfConditionOption = listOfConditionOption,
@@ -131,7 +131,7 @@
             {
                 if (task.Process.NextProcessId != null)
                 {
-                    @Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
+                    @await Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
     taskId = task.Process.NextProcessId,
     elementOfTree = elementOfTree,
     listOfConditionOption = listOfConditionOption,
@@ -156,7 +156,7 @@
 
     if (task.Process.NextProcessId != null)
     {
-        @Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
+        @await Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
     taskId = task.Process.NextProcessId,
     elementOfTree = elementOfTree,
     listOfConditionOption = listOfConditionOption,

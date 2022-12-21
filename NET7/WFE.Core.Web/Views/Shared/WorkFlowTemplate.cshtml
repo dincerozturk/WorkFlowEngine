@@ -1,9 +1,10 @@
-﻿@using WorkFlowManager.Common.ViewModels
-@using WorkFlowManager.Common.Extensions
-@model WorkFlowFormViewModel
-@using WorkFlowManager.Common.Enums
+﻿@model WorkFlowFormViewModel
+@{
 
-@using (Html.BeginForm("", Model.ProcessTaskController, FormMethod.Post, new { @class = "form-horizontal" }))
+}
+
+@*<form asp-action="SaveAndSend" asp-controller="@Model.ProcessTaskController" method="post" class="form-horizontal"></form>*@
+@using (Html.BeginForm("SaveAndSend", Model.ProcessTaskController, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken();
 

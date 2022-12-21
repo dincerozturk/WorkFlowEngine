@@ -57,7 +57,7 @@
 @if (Model.NextProcessList != null)
 {
     <div class="panel-group" id="accordionTree">
-        @Html.PartialAsync("", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
+        @await Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
     taskId = Model.FirstProcessId,
     elementOfTree = elementOfTree,
     listOfConditionOption = listOfConditionOption,
@@ -68,7 +68,7 @@
 
         @foreach (var islem in Model.NextProcessList.Where(x => !elementOfTree.Any(t => t == x.Process.Id)).ToList())
         {
-            @Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
+            @await Html.PartialAsync("~/Views/Workflow/_TaskWriter.cshtml", new WorkFlowManager.Common.ViewModels.TaskWriterModel() {
     taskId = islem.Process.Id,
     elementOfTree = elementOfTree,
     listOfConditionOption = listOfConditionOption,

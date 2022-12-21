@@ -18,7 +18,7 @@ namespace WorkFlowManager.Common.Extensions
                 throw new ArgumentNullException("controller");
 
 
-            var result = RenderActionAsync(helper, action, controller, area, parameters).GetAwaiter().GetResult();
+            var result = helper.RenderActionAsync(action, controller, area, parameters).GetAwaiter().GetResult();
 
             return result;
         }
@@ -38,7 +38,7 @@ namespace WorkFlowManager.Common.Extensions
             {
                 routeData.PushState(router, null, null);
             }
-            routeData.PushState(null, new RouteValueDictionary(new { controller = controller, action = action, area = area }), null);
+            routeData.PushState(null, new RouteValueDictionary(new { controller, action, area }), null);
             routeData.PushState(null, new RouteValueDictionary(parameters ?? new { }), null);
 
             //get the actiondescriptor

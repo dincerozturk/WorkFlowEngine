@@ -1,6 +1,4 @@
-﻿@*@using System.Web.Optimization*@
-@using WorkFlowManager.Common.Enums; 
-@{
+﻿@{
     Layout = null;
 }
 @using WorkFlowManager.Common.Extensions
@@ -12,31 +10,14 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/Content/bootstrap.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/_all-skins.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/kendo.common.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/kendo.default.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/AdminLTE.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/progress-wizard.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/mermaid.forest.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/bootstrap-switch.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/plugins/iCheck/all.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/fileUploader.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/workflow.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Content/site.css" crossorigin="anonymous">
-
-    @*    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/workflow")
-    @Scripts.Render("~/bundles/bootstrap")*@
+    <link asp-append-version="true" rel="stylesheet" href="~/bundles/app.css" />
+    <script asp-append-version="true" src="~/bundles/modernizr.js"></script>
+    <script asp-append-version="true" src="~/bundles/jquery.js"></script>
+    <script asp-append-version="true" src="~/bundles/workflow.js"></script>
+    <script asp-append-version="true" src="~/bundles/bootstrap.js"></script>
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse">
@@ -71,21 +52,7 @@
 
     <form class="hidden" id="anti-forgery-form">
         @Html.AntiForgeryToken()
-    </form>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-   
-    <script src="/bundles/jquery.validate.min.js"></script>
-    <script src="/bundles/modernizr.min.js"></script>
-
-    <script src="/Scripts/bootstrap.min.js"></script>
-    <script src="/Scripts/highlight.js"></script>
-    <script src="/Scripts/main.js"></script>
-    <script src="/Scripts/respond.js"></script>
-
-    <script src="/bundles/workflow.min.js"></script>
-     @RenderSection("scripts", required: false)
+    </form>     
 </body>
 </html>
 

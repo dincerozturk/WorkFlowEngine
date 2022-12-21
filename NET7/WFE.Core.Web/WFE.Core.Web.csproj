@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Components\TaskWriterComponent.razor" />
-    <Content Remove="Views\WorkFlow\_TaskWriter.cshtml" />
-    <Content Remove="wwwroot\Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Remove="wwwroot\Scripts\jquery-3.6.1.intellisense.js" />
-    <Content Remove="wwwroot\Scripts\jquery.validate-vsdoc.js" />
+    <Content Remove="package.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +20,6 @@
     <None Include="Views\WorkFlow\_DecisionMethod.cshtml" />
     <None Include="Views\WorkFlow\_SpecialForms.cshtml" />
     <None Include="Views\WorkFlow\_WorkFlowSummary.cshtml" />
-    <None Include="wwwroot\Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="wwwroot\Scripts\jquery-3.6.1.intellisense.js" />
     <None Include="wwwroot\Scripts\jquery.validate-vsdoc.js" />
   </ItemGroup>
@@ -43,6 +38,10 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\WFE.Core.Services\WFE.Core.Services.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="wwwroot\bundles\" />
   </ItemGroup>
 
 </Project>

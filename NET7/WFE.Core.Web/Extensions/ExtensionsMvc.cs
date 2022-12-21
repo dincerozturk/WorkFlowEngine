@@ -1,17 +1,10 @@
-﻿using Hangfire.Dashboard;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Options;
-using System;
 using System.Collections;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Mail;
 using System.Text;
@@ -20,7 +13,6 @@ using System.Web;
 //using System.Web.Mvc;
 //using System.Web.Mvc.Html;
 using WorkFlowManager.Common.Enums;
-using WorkFlowManager.Web.Infra;
 
 namespace WorkFlowManager.Common.Extensions
 {
@@ -76,7 +68,7 @@ namespace WorkFlowManager.Common.Extensions
         /// <returns></returns>
         public static HtmlString RenderMessages(this IHtmlHelper htmlHelper, MessageDialogType type = MessageDialogType.AdminLTE)
         {
-            var messages = String.Empty;
+            var messages = string.Empty;
             foreach (var messageType in Enum.GetNames(typeof(MessageType)))
             {
                 var message = htmlHelper.ViewContext.ViewData.ContainsKey(messageType)
@@ -131,12 +123,12 @@ namespace WorkFlowManager.Common.Extensions
             //return MvcHtmlString.Create(messages);
         }
 
-        public static IHtmlContent PartialFor<TModel, TProperty>(this IHtmlHelper<TModel> helper, System.Linq.Expressions.Expression<Func<TModel, TProperty>> expression, string partialViewName)
+        public static IHtmlContent PartialFor<TModel, TProperty>(this IHtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, string partialViewName)
         {
             ModelExpressionProvider expressionProvider = new ModelExpressionProvider(helper.MetadataProvider);
             var metadata = expressionProvider.CreateModelExpression(helper.ViewData, expression);
             string name = expressionProvider.GetExpressionText(expression);
-            IModelMetadataProvider aa= helper.MetadataProvider;
+            IModelMetadataProvider aa = helper.MetadataProvider;
             object model = helper.ViewData.Model;
 
             var viewData = new ViewDataDictionary(helper.ViewData);
@@ -281,7 +273,7 @@ namespace WorkFlowManager.Common.Extensions
 
             foreach (var c in text.Trim().ToLower())
             {
-                if (Char.IsLetterOrDigit(c))
+                if (char.IsLetterOrDigit(c))
                 {
                     sb.Append(c);
                     lastWasInvalid = false;
@@ -320,7 +312,7 @@ namespace WorkFlowManager.Common.Extensions
             string result = "";
             foreach (string word in words)
             {
-                var englishWord = String.Join("", word.Normalize(NormalizationForm.FormD)
+                var englishWord = string.Join("", word.Normalize(NormalizationForm.FormD)
                     .Where(c => char.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
 
                 englishWord = englishWord.Replace('ı', 'i');

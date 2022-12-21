@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using WorkFlowManager.Common.Extensions;
 //using System.Web.Mvc;
 //using WorkflowManager.Common.Dto.Dto;
 using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.Enums;
-using WorkFlowManager.Common.Extensions;
 using WorkFlowManager.Common.InfraStructure;
 using WorkFlowManager.Common.Tables;
 using WorkFlowManager.Common.Validation;
 using WorkFlowManager.Common.ViewModels;
 using WorkFlowManager.Helper;
 using WorkFlowManager.Services.DbServices;
+using WorkFlowManager.Web;
 
 namespace WorkFlowManager.Web.Controllers
 {
@@ -110,12 +111,12 @@ namespace WorkFlowManager.Web.Controllers
             try
             {
                 string result = _workFlowService.Delete(processId);
-                return RedirectToAction("Index", new { taskId = taskId }).WithMessage(this, result, MessageType.Success);
+                return RedirectToAction("Index", new { taskId }).WithMessage(this, result, MessageType.Success);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
 
-                return RedirectToAction("Index", new { taskId = taskId }).WithMessage(this, string.Format("{0}", ex.Message), MessageType.Danger);
+                return RedirectToAction("Index", new { taskId }).WithMessage(this, string.Format("{0}", ex.Message), MessageType.Danger);
             }
         }
 
@@ -144,12 +145,12 @@ namespace WorkFlowManager.Web.Controllers
             try
             {
                 _workFlowService.SetNextByProcessCode(processCode, nextId);
-                return RedirectToAction("Index", new { taskId = taskId }).WithMessage(this, "Done.", MessageType.Success);
+                return RedirectToAction("Index", new { taskId }).WithMessage(this, "Done.", MessageType.Success);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
 
-                return RedirectToAction("Index", new { taskId = taskId }).WithMessage(this, string.Format("{0}", ex.Message), MessageType.Danger);
+                return RedirectToAction("Index", new { taskId }).WithMessage(this, string.Format("{0}", ex.Message), MessageType.Danger);
             }
         }
         public void ProcessFormInitialize(ref ProcessForm formData)
@@ -198,7 +199,7 @@ namespace WorkFlowManager.Web.Controllers
             {
                 if (formData.Id == 0)
                 {
-                    formData.AssignedRole = (formData.ProcessType == ProcessType.DecisionPoint || formData.ProcessType == ProcessType.SubProcess ? ProjectRole.System : ProjectRole.Officer);
+                    formData.AssignedRole = formData.ProcessType == ProcessType.DecisionPoint || formData.ProcessType == ProcessType.SubProcess ? ProjectRole.System : ProjectRole.Officer;
                 }
             }
             formData = ProcessFormLoad(formData);
@@ -239,7 +240,7 @@ namespace WorkFlowManager.Web.Controllers
                 workFlowViewModel = new WorkFlowViewModel
                 {
                     ActiveTaskId = taskId,
-                    FirstProcessId = (actkiveTask.StartingProcessId != null ? (int)actkiveTask.StartingProcessId : 0),
+                    FirstProcessId = actkiveTask.StartingProcessId != null ? (int)actkiveTask.StartingProcessId : 0,
                     NextProcessList = nextProcessList
                 };
             }

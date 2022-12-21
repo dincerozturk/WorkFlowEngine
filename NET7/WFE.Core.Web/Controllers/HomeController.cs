@@ -6,7 +6,7 @@ using WorkFlowManager.Common.DataAccess._UnitOfWork;
 using WorkFlowManager.Common.Tables;
 using WorkFlowManager.Web.Models;
 
-namespace WorkFlowManager.Web.Controllers
+namespace WFE.Core.Web.Controllers
 {
     public class HomeController : Controller
     {
