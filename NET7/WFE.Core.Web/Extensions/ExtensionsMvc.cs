@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Html;
+﻿using Hangfire.Dashboard;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -16,6 +20,7 @@ using System.Web;
 //using System.Web.Mvc;
 //using System.Web.Mvc.Html;
 using WorkFlowManager.Common.Enums;
+using WorkFlowManager.Web.Infra;
 
 namespace WorkFlowManager.Common.Extensions
 {
@@ -126,20 +131,18 @@ namespace WorkFlowManager.Common.Extensions
             //return MvcHtmlString.Create(messages);
         }
 
-        public static HtmlString PartialFor<TModel, TProperty>(this IHtmlHelper<TModel> helper, System.Linq.Expressions.Expression<Func<TModel, TProperty>> expression, string partialViewName)
+        public static IHtmlContent PartialFor<TModel, TProperty>(this IHtmlHelper<TModel> helper, System.Linq.Expressions.Expression<Func<TModel, TProperty>> expression, string partialViewName)
         {
-            //string name = ExpressionHelper.GetExpressionText(expression);
-            //object model = ModelMetadata.FromLambdaExpression(expression, helper.ViewData).Model;
-            //var viewData = new ViewDataDictionary(helper.ViewData)
-            //{
-            //    TemplateInfo = new System.Web.Mvc.TemplateInfo
-            //    {
-            //        HtmlFieldPrefix = name
-            //    }
-            //};
+            ModelExpressionProvider expressionProvider = new ModelExpressionProvider(helper.MetadataProvider);
+            var metadata = expressionProvider.CreateModelExpression(helper.ViewData, expression);
+            string name = expressionProvider.GetExpressionText(expression);
+            IModelMetadataProvider aa= helper.MetadataProvider;
+            object model = helper.ViewData.Model;
 
-            //return helper.Partial(partialViewName, model, viewData);
-            return null;
+            var viewData = new ViewDataDictionary(helper.ViewData);
+            viewData.TemplateInfo.HtmlFieldPrefix = name;
+
+            return helper.Partial(partialViewName, model, viewData);
         }
 
         public static bool IsPasswordValid(this string str)
