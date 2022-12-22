@@ -1,15 +1,16 @@
 ﻿@model WorkFlowManager.Common.ViewModels.WorkFlowView
+@using System.Web
 
 @*@Scripts.Render("~/bundles/jquery")
 @Styles.Render("~/Content/css")*@
-<script src="~/bundles/jquery.js"></script>
-<link href="~/bundles/app.css" rel="stylesheet" />
+<script asp-append-version="true" src="~/bundles/jquery.js"></script>
+<link asp-append-version="true" href="~/bundles/app.css" rel="stylesheet" />
 
 <!-- Theme style -->
-<link rel="stylesheet" href="~/Content/AdminLTE.min.css" />
+<link asp-append-version="true" rel="stylesheet" href="~/Content/AdminLTE.min.css" />
 
-<link rel="stylesheet" href="~/Content/mermaid.forest.css" />
-<script src="~/Scripts/mermaid.js"></script>
+<link asp-append-version="true" rel="stylesheet" href="~/Content/mermaid.forest.css" />
+<script asp-append-version="true" src="~/Scripts/mermaid.js"></script>
 
 
 <div class="row">
@@ -100,7 +101,7 @@
     });
 
     $(function () {
-        //var text = 'Html.Raw(HttpUtility.JavaScriptStringEncode(Model.WorkFlowText))';
+        var text = '@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.WorkFlowText))';
         var element = document.getElementById('isAkisiGoruntulemeBolumu')
         IslAkisiGoruntule(mermaidAPI, text, element);
     });
