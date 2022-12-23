@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 //using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Data.Entity;
+using System.Text.Json.Serialization;
 using WorkflowManager.Common.Dto;
 using WorkFlowManager.Common.Constants;
 using WorkFlowManager.Common.DataAccess._Context;
@@ -17,7 +18,6 @@ using WorkFlowManager.Helper;
 using WorkFlowManager.Services.CustomForms;
 using WorkFlowManager.Services.DbServices;
 using WorkFlowManager.Web;
-
 namespace WFE.Core.Web
 {
     public class Program
@@ -27,10 +27,16 @@ namespace WFE.Core.Web
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            ).AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
+            builder.Services.AddHttpClient();
+            builder.Services.AddHttpContextAccessor();
 
 
             //var connectingstring = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -130,5 +136,5 @@ namespace WFE.Core.Web
             #endregion
         }
     }
-    
+
 }

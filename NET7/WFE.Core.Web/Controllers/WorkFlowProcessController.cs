@@ -21,8 +21,7 @@ namespace WorkFlowManager.Web.Controllers
         public WorkFlowProcessController(
             IWorkFlowProcessService workFlowProcessService
             , IWorkFlowService workFlowService
-,
-IMapper mapper
+            , IMapper mapper
 
             )
         {
@@ -80,16 +79,13 @@ IMapper mapper
 
             WorkFlowFormViewModel workFlowTraceForm = _mapper.Map<WorkFlowTrace, WorkFlowFormViewModel>(workFlowTrace);
             int ownerId = workFlowTraceForm.OwnerId;
-            ActionResult viewResult = null;
-
-            WorkFlowFormViewModel workFlowForm = null;
 
             var workFlowBase = _workFlowProcessService.WorkFlowBaseInfo(userProcessVM);
             _workFlowProcessService.SetWorkFlowTraceForm(workFlowTraceForm, workFlowBase);
 
-            workFlowForm = _workFlowProcessService.WorkFlowFormLoad(workFlowTraceForm);
+            var workFlowForm = _workFlowProcessService.WorkFlowFormLoad(workFlowTraceForm);
 
-            viewResult = View(workFlowForm.ProcessTaskSpecialFormTemplateView, workFlowForm);
+            var viewResult = View(workFlowForm.ProcessTaskSpecialFormTemplateView, workFlowForm);
             return viewResult;
 
         }

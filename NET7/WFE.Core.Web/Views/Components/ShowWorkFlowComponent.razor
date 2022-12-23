@@ -15,5 +15,14 @@
     protected override async Task OnInitializedAsync()
     {
         Model = _workFlowService.GetWorkFlowDiagram(taskId);
+        await base.OnInitializedAsync();
+    }
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            
+        }
+        return base.OnAfterRenderAsync(firstRender);
     }
 }
